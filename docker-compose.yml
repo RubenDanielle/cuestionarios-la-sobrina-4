@@ -11,8 +11,8 @@ services:
       LANG: "C.UTF-8"
       LC_ALL: "C.UTF-8"
     volumes:
-      - .:/usr/src/app
-      - ./.bundle:/usr/local/bundle
+      - $PWD:/usr/src/app
+      - "${PWD}/.bundle:/usr/local/bundle"
   db:
     # use latest official postgres version
     image: postgres
