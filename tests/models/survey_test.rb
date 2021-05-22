@@ -19,7 +19,7 @@ class SurveyTest < MiniTest::Unit::TestCase
     survey = Survey.new    
 
     # Act
-    survey.id_career = nil 
+    survey.career_id = nil 
 
     # Assert
     assert_equal survey.valid?, false
