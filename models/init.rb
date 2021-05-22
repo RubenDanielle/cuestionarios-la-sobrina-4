@@ -1,3 +1,5 @@
 require_relative 'post'
 require_relative 'career'
 require_relative 'survey'
+require_relative 'outcome'
+require_relative 'choice'
