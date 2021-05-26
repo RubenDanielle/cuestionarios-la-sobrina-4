@@ -5,6 +5,7 @@ class Question < Sequel::Model
 		super
 		errors.add(:number, 'cannot be empty') if !number || number.empty?
         errors.add(:name, 'cannot be empty') if !name || name.empty?
+        errors.add(:type, 'cannot be empty') if !type || type.empty?
 	end
 end
 	
