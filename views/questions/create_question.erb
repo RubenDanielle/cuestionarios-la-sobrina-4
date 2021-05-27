@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>crear pregunta</title>
+</head>
+<body>
+
+    <form action = '/questions' method="POST" class="form-question">
+
+        <div class="form-question">
+            <label for="name">Pregunta: </label>
+            <input type="text" name="name" id="name" required>
+        </div>
+
+        <div class="form-question">
+            <label for="description">Descripcion: </label>
+            <input type="text" name="description" id="description">
+        </div>
+
+        <div class="form-question">
+            <label for="number">Numero: </label>
+            <input type="number" name="number" id="number" min="1" required>
+        </div>
+
+        <div class="form-question">
+            <label for="type">Tipo:</label>
+            <select name="type" id="type">
+                <option disabled selected hidden>Seleccione:</option>
+                <option>Single Choice</option>
+                <option>Multiple Choice</option>
+            </select>
+        </div>
+
+        <div class="form-question">
+            <input type="submit" value="Enviar">
+        </div>
+        
+    </form>
+</body>
+</html>

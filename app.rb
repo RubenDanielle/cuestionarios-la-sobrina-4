@@ -27,7 +27,23 @@ class App < Sinatra::Base
     erb :'careers/career_data'
   end
 
+  post "/questions" do
+    question = Question.new(name: params['name'], description: params['description'], number: params['number'], type: params['type'])
 
+    if question.save
+      [201, {'Location' => "questions/#{question.id}"}, 'Pregunta agregada']
+    else
+      [500, {}, 'Internal Server Error']
+    end
+  end
+
+  get "/questions" do
+    erb :'questions/create_question'
+  end
+
+  get "/choices" do
+    erb :'choices/create_choice'
+  end
 
   get "/surveys" do
     @surveys=Survey.all
