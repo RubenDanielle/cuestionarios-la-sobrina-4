@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>cuestionarios</title>
+</head>
+<body>
+    <h1>Cuestionarios por carrera</h1>
+    <ul>
+        <% @surveys.map do |survey| %>
+            <li>
+                <a href="surveys/<%= survey.id%>"> <%= survey.career.name %></a>
+                (<%= survey.responses.count.to_s %>)
+            </li>
+        <%end%>
+    </ul>
+</body>
+</html>

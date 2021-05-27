@@ -13,7 +13,7 @@
 			<% @careers.map do |career| %>
 		 		<li>
 		 			<a href="careers/<%= career.id%>"> <%= career.name %></a>
-		 			(<%= career.surveys.count.to_s %>)
+		 			(preguntas: <%= career.surveys.count.to_s %>)
 		 		</li>
 		 	<%end%>
 		</ul>

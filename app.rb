@@ -1,14 +1,10 @@
 require './models/init.rb'
 
 class App < Sinatra::Base
-  get '/' do
-    "Hello World"
-  end
 
-  get "/hello/:name" do
-   @name = params[:name]
-   erb :hello_template
-  end
+  get '/' do
+    erb :home
+  end  
 
   post "/careers" do
  
@@ -23,18 +19,19 @@ class App < Sinatra::Base
 
   get "/careers" do
     @careers=Career.all
-    erb :'careers/list_career'
+    erb :'careers/list_careers'
   end
 
   get "/careers/:id" do
-    career=Career.where(id: params['id']).last
-    "<h1> Resumen de la carrera #{career.name}</h1>" +
-    "<ul>" +
-    "<li> id: #{career.id}" +
-    "<li> name: #{career.name}" +
-    "<li> survey count: #{career.surveys.count}"+
-    "</ul>"
+    @career = Career.where(id: params['id']).last
+    erb :'careers/career_data'
+  end
 
+
+
+  get "/surveys" do
+    @surveys=Survey.all
+    erb :'surveys/list_surveys'
   end
 
   post "/posts" do

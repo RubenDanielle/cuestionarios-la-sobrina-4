@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>datos de la carrera</title>
+</head>
+<body>
+    <h1> Resumen de la carrera <%= @career.name%> </h1>
+    <ul>
+        <li> id: <%= @career.id%> </li>
+        <li> name: <%= @career.name%> </li>
+        <li> survey count: <%= @career.surveys.count %> </li>
+    </ul>
+</body>
+</html>
