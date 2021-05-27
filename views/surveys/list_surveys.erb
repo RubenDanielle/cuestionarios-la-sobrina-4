@@ -4,18 +4,17 @@
     <title>cuestionarios</title>
 </head>
 <body>
-    <form action = '/surveys' method='POST'>
-        <input type='text' name='name' value=''>
-        <input type='submit' value='Enviar'>
-    <form>
-    <hr> 
-    <h1>Cuestionarios disponibles</h1>
+    <h1>Carreras obtenidas por cada usuario</h1>
     <ul>
-        <% @surveys.map do |survey| %>
-            <li>
-                <a href="surveys/<%= survey.id%>"> <%= survey.career.name %></a>
-                (<%= survey.responses.question.count.to_s %>)
-            </li>
+        <% @careers.map do |career| %>
+            <p><a href="careers/<%= career.id %>"> <%= career.name %></a></p>
+            <ul>
+                <% @surveys.map do |survey| %>
+                    <li>
+                        <a href="surveys/<%= survey.id%>"> <%= survey.username %></a>
+                    </li>
+                <%end%>
+            </ul>
         <%end%>
     </ul>
 </body>

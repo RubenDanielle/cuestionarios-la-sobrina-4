@@ -4,11 +4,6 @@
 		<title>Lista de carreras disponibles</title>
 	</head>
 	<body>
-		<form action = '/careers' method='POST'>
-			<input type='text' name='name' value='Agregar carrera'>
-			<input type='submit' value='Enviar'>
-  		<form>
-  		<hr> 
 		<h1>Carreras disponibles</h1>
 		<ul>
 			<% @careers.map do |career| %>
@@ -18,5 +13,16 @@
 		 		</li>
 		 	<%end%>
 		</ul>
+  		<hr> 
+		<h3>Agregar carrera: </h3>
+		<form action = '/careers' method='POST' class="form-careers">
+			<div class="form-careers">
+				<label for="name">Nombre: </label>
+				<input type='text' name='name' id="name" required>
+			</div>
+			<div class="form-careers">
+				<input type='submit' value='Enviar'>
+			</div>
+  		<form>
 	</body>
 </html>

@@ -29,9 +29,26 @@ class App < Sinatra::Base
 
   post "/questions" do
     question = Question.new(name: params['name'], description: params['description'], number: params['number'], type: params['type'])
-
     if question.save
-      [201, {'Location' => "questions/#{question.id}"}, 'Pregunta agregada']
+      choice1 = Choice.new(question_id: question.id, text: params['text1'])
+      choice2 = Choice.new(question_id: question.id, text: params['text2'])
+      if params['text3'] && !(params['text3'].empty?)
+        choice3 = Choice.new(question_id: question.id, text: params['text3'])
+        choice3.save
+      end
+      if params['text4'] && !(params['text4'].empty?)
+        choice4 = Choice.new(question_id: question.id, text: params['text4'])
+        choice4.save
+      end
+      if params['text5'] && !(params['text5'].empty?)
+        choice5 = Choice.new(question_id: question.id, text: params['text5'])
+        choice5.save
+      end
+      if choice1.save && (choice2.save || choice3 || choice4 || choice5)
+        [201, {'Location' => "questions/#{question.id}"}, 'Pregunta agregada']
+      else
+        [500, {}, 'Internal Server Error']
+      end
     else
       [500, {}, 'Internal Server Error']
     end
@@ -41,11 +58,18 @@ class App < Sinatra::Base
     erb :'questions/create_question'
   end
 
+  # esta ruta es para probar si se crean las respuestas, luego se debe borrar
+  get "/questions_list" do
+    @questions = Question.all
+    erb :'questions/list_questions'
+  end
+
   get "/choices" do
     erb :'choices/create_choice'
   end
 
   get "/surveys" do
+    @careers=Career.all
     @surveys=Survey.all
     erb :'surveys/list_surveys'
   end

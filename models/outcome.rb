@@ -4,7 +4,7 @@ class Outcome < Sequel::Model
 
     def validate
     	super
-    	errors.add(:choice_id, 'cannot be empty') if !choice_id || choice_id.empty?
-    	errors.add(:career_id, 'cannot be empty') if !career_id || career_id.empty?
+    	errors.add(:choice_id, 'cannot be empty') if !choice_id
+    	errors.add(:career_id, 'cannot be empty') if !career_id
     end
 end
