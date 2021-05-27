@@ -4,16 +4,17 @@
 		<title>Lista de carreras disponibles</title>
 	</head>
 	<body>
-		<h1>Carreras disponibles</h1>
 		<form action = '/careers' method='POST'>
-			<input type='text' name='name' value='name'>
+			<input type='text' name='name' value='Agregar carrera'>
 			<input type='submit' value='Enviar'>
   		<form>
+  		<hr> 
+		<h1>Carreras disponibles</h1>
 		<ul>
 			<% @careers.map do |career| %>
 		 		<li>
 		 			<a href="careers/<%= career.id%>"> <%= career.name %></a>
-		 			(preguntas: <%= career.surveys.count.to_s %>)
+		 			(aparece en : <%= career.surveys.count.to_s %> cuestionarios)
 		 		</li>
 		 	<%end%>
 		</ul>
