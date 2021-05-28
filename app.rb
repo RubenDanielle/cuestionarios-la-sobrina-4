@@ -64,6 +64,11 @@ class App < Sinatra::Base
     erb :'questions/list_questions'
   end
 
+  get "/questions/:id" do
+    @question = Question.where(id: params['id']).last
+    erb :'questions/questions_data'
+  end
+
   get "/choices" do
     erb :'choices/create_choice'
   end
