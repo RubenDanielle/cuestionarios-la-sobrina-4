@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Completar cuestionario</title>
+	</head>
+	<body>
+		<form action ='/surveys' method="POST" class = "survey">
+			<label for = "username" >Ingrese un nombre de usuario: </label>
+			<input type="text" name = "username" id = "username" required>
+			<ul>
+			<% @questions.map do |question| %>
+				<li> <%=question.name%>: <br> 
+					 <%=question.description%>
+					 <ul>
+						 <% @choices.select {|ch| question.id == ch.question_id }.map do |choice| %>
+						 		<input type="radio" name = <%=question.id%> required ><%=choice.text%><br>
+						 <%end%>
+					</ul>
+			<%end%>
+			</ul>
+			<input type="submit" value = 'Enviar respuestas'>
+		</form>
+	</body>
+</html>
