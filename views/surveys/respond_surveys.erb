@@ -13,7 +13,7 @@
 					 <%=question.description%>
 					 <ul>
 						 <% @choices.select {|ch| question.id == ch.question_id }.map do |choice| %>
-						 		<input type="radio" name = <%=question.id%> required ><%=choice.text%><br>
+						 		<input type="radio" name = <%=question.id%> value = <%=choice.id%> required ><%=choice.text%><br>
 						 <%end%>
 					</ul>
 			<%end%>
@@ -22,3 +22,4 @@
 		</form>
 	</body>
 </html>
+

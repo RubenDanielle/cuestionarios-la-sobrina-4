@@ -130,7 +130,7 @@ preg11= Question.create(name: 'Pregunta Nº 11 ', description: 'Me encanta estud
     ch2_preg11 = Choice.create(text: 'No', question_id: preg11.id)
 
 #twelveth question
-preg12 = Question.create(name: 'Pregunta Nº 12. ', description: 'Si pudiera elegir, pasaría mucho tiempo diseñando novedosos objetos o edificios en mi computadora.', number: 12, type: 'Single Choice')
+preg12 = Question.create(name: 'Pregunta Nº 12 ', description: 'Si pudiera elegir, pasaría mucho tiempo diseñando novedosos objetos o edificios en mi computadora.', number: 12, type: 'Single Choice')
     
     ch1_preg12 = Choice.create(text: 'Si', question_id: preg12.id)
         
@@ -140,7 +140,7 @@ preg12 = Question.create(name: 'Pregunta Nº 12. ', description: 'Si pudiera ele
     ch2_preg12 = Choice.create(text: 'No', question_id: preg12.id)
 
 #thirteenth question
-preg13 = Question.create(name: 'Pregunta Nº 13. ', description: 'Si mi blog fuera temático, trataría acerca de: ', number: 13, type: 'Single Choice')
+preg13 = Question.create(name: 'Pregunta Nº 13 ', description: 'Si mi blog fuera temático, trataría acerca de: ', number: 13, type: 'Single Choice')
     
     ch1_preg13 = Choice.create(text: ' La importancia de la expresión artística en el desarrollo de la identidad de los pueblos.', question_id: preg13.id)
         
@@ -158,7 +158,7 @@ preg13 = Question.create(name: 'Pregunta Nº 13. ', description: 'Si mi blog fue
     ch4_preg13 = Choice.create(text: 'Ninguna de las opciones.', question_id: preg13.id)
 
 #fourteenth question
-preg14 = Question.create(name: 'Pregunta Nº 14. ', description: 'Integraría un equipo de trabajo encargado de producir un audiovisual sobre: ', number: 14, type: 'Single Choice')
+preg14 = Question.create(name: 'Pregunta Nº 14 ', description: 'Integraría un equipo de trabajo encargado de producir un audiovisual sobre: ', number: 14, type: 'Single Choice')
     
     ch1_preg14 = Choice.create(text: ' La práctica de deportes y su influencia positiva en el estado de ánimo de las personas.', question_id: preg14.id)
         
@@ -184,7 +184,7 @@ preg14 = Question.create(name: 'Pregunta Nº 14. ', description: 'Integraría un
     ch6_preg14 = Choice.create(text: 'Ninguna de las opciones.', question_id: preg14.id)
 
 #fifteenth question
-preg15 = Question.create(name: 'Pregunta Nº 15. ', description: 'Sería importante destacarme como: ', number: 15, type: 'Single Choice')
+preg15 = Question.create(name: 'Pregunta Nº 15 ', description: 'Sería importante destacarme como: ', number: 15, type: 'Single Choice')
     
     ch1_preg15 = Choice.create(text: 'Director de una investigación técnico científica', question_id: preg15.id)
         

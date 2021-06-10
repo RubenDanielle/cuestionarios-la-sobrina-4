@@ -6,16 +6,6 @@ class App < Sinatra::Base
     erb :home
   end  
 
-  post "/careers" do
- 
-    career = Career.new(name: params['name'])
-
-    if career.save
-      [201, {'Location' => "careers/#{career.id}"}, 'Carrera agregada']
-    else
-      [500, {}, 'Internal Server Error']
-    end
-  end 
 
   get "/careers" do
     @careers=Career.all
@@ -27,56 +17,48 @@ class App < Sinatra::Base
     erb :'careers/career_data'
   end
 
-  post "/questions" do
-    question = Question.new(name: params['name'], description: params['description'], number: params['number'], type: params['type'])
-    if question.save
-      choice1 = Choice.new(question_id: question.id, text: params['text1'])
-      choice2 = Choice.new(question_id: question.id, text: params['text2'])
-      if params['text3'] && !(params['text3'].empty?)
-        choice3 = Choice.new(question_id: question.id, text: params['text3'])
-        choice3.save
+  post "/surveys" do 
+    questions = Question.all
+    careers = Career.all
+    results = {}
+    responses = {}
+    value = 0
+    careers.map do |career|
+      results[career.id] = 0
+    end
+    questions.map do |question| 
+      choices = Choice.select {|ch| question.id == ch.question_id }
+      choices.map do |choice|
+        response = Response.new(survey_id: Survey.max(:id).to_i.next, question_id: question.id, choice_id: params[question.id.to_s])
+        responses.merge(response)
+        outcomes = Outcome.select { |out| choice.id == out.choice_id }
+        outcomes.map do |outcome|
+          results[outcome.career_id] =+ 1
+        end
       end
-      if params['text4'] && !(params['text4'].empty?)
-        choice4 = Choice.new(question_id: question.id, text: params['text4'])
-        choice4.save
+    end
+    resulting_career = results.key(results.values.max)
+    survey = Survey.new(career_id: resulting_career, username: params['username'])
+    if survey.save
+      responses.map do |resp|
+        resp.save
       end
-      if params['text5'] && !(params['text5'].empty?)
-        choice5 = Choice.new(question_id: question.id, text: params['text5'])
-        choice5.save
-      end
-      if choice1.save && (choice2.save || choice3 || choice4 || choice5)
-        [201, {'Location' => "questions/#{question.id}"}, 'Pregunta agregada']
-      else
-        [500, {}, 'Internal Server Error']
-      end
+      [201, {'Location' => "surveys/#{survey.id}"}, 'Cuestionario guardado, su carrera resultante es ' + careers[resulting_career].name]
     else
       [500, {}, 'Internal Server Error']
-    end
-  end
-
-  get "/questions" do
-    erb :'questions/create_question'
-  end
-
-  # esta ruta es para probar si se crean las respuestas, luego se debe borrar
-  get "/questions_list" do
-    @questions = Question.all
-    erb :'questions/list_questions'
-  end
-
-  get "/questions/:id" do
-    @question = Question.where(id: params['id']).last
-    erb :'questions/questions_data'
-  end
-
-  get "/choices" do
-    erb :'choices/create_choice'
+    end  
   end
 
   get "/surveys" do
     @careers=Career.all
     @surveys=Survey.all
     erb :'surveys/list_surveys'
+  end
+
+  get "/respond_surveys" do
+    @questions = Question.all
+    @choices = Choice.all
+    erb :'surveys/respond_surveys' 
   end
 
   post "/posts" do
