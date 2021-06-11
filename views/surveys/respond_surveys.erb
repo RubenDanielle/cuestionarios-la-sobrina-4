@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="styles/style_list_careers.css">
 		<title>Completar cuestionario</title>
+		<link rel="shortcut icon" href="images/UNRC-color.png">
 	</head>
 	<body>
 		<form action ='/surveys' method="POST" class = "survey">
-			<label for = "username" >Ingrese un nombre de usuario: </label>
-			<input type="text" name = "username" id = "username" required>
+			<label for = "username" class="text_field">Ingrese un nombre de usuario: 
+				<input type="text" name = "username" id = "username" required>
+			</label>
 			<ul>
 			<% @questions.map do |question| %>
 				<li> <%=question.name%>: <br> 
 					 <%=question.description%>
 					 <ul>
 						 <% @choices.select {|ch| question.id == ch.question_id }.map do |choice| %>
-						 		<input type="radio" name = <%=question.id%> value = <%=choice.id%> required ><%=choice.text%><br>
+						 	<label class="container"><%=choice.text%>
+						 		<input type="radio" name = <%=question.id%> value = <%=choice.id%> required >
+						 		<span class="custom_radio_button"></span>
+							</label>
+
 						 <%end%>
 					</ul>
 			<%end%>

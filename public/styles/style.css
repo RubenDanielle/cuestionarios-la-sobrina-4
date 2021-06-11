@@ -1,34 +1,38 @@
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik/Rubik-VariableFont_wght.ttf");
+}
+
 body{
-    background: #509FC9;
+    background: #d1e0f2;
     background-size:contain;
     background-position-y: 200px;
     background-repeat: no-repeat;
 }
+
 .sis{
     width: 20px;
     height: auto;
     display: left;
-
 }
+
 h1{
     text-align: center;
     padding: 8px;
     max-width: 8000px;
-    
+    font-size: 50px;
+    font-weight: normal;
+    line-height: 0px;
+    font-family: "Rubik";
 }
-.capa{
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100vh;
-    opacity: 0.7;
-}
+
 .encabezado{
     font-size: 30px;
     margin: 10px;
     text-align: center;
     font-family: 'Lucida Sans';
 }
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -41,6 +45,7 @@ ul {
 
 li {
     float: left;
+    width: 16.66%;
 }
 
 li a {
@@ -54,17 +59,16 @@ li a {
 li a:hover {
     background-color:gray;
 }
+
 h2{
-    line-height: 0px;
-    text-align: center;
-    font-size: 70px;
-    color:gray;
-    font-family: "Homer Simpson UI";
-    padding: 100px;
+    
 }
-img{
+
+.logoUni{
     display:block;
     margin-left: auto;
     margin-right: auto;
-    
+    opacity: 0.5;
+    filter: alpha(opacity = 50);    
 }
+

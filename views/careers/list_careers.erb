@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<link rel="stylesheet" href="styles/style_list_careers.css">
 		<title>Lista de carreras disponibles</title>
+		<link rel="shortcut icon" href="images/UNRC-color.png">
 	</head>
 	<body>
 		<h1>Carreras disponibles</h1>
@@ -9,7 +14,6 @@
 			<% @careers.map do |career| %>
 		 		<li>
 		 			<a href="careers/<%= career.id%>"> <%= career.name %></a>
-		 			(aparece en : <%= career.surveys.count.to_s %> cuestionarios)
 		 		</li>
 		 	<%end%>
 		</ul>

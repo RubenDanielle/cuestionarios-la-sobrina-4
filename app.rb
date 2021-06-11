@@ -22,18 +22,17 @@ class App < Sinatra::Base
     careers = Career.all
     results = {}
     responses = {}
+    outcomes = Outcome.all
     value = 0
     careers.map do |career|
       results[career.id] = 0
     end
     questions.map do |question| 
-      choices = Choice.select {|ch| question.id == ch.question_id }
-      choices.map do |choice|
+      choices = Choice.select {|ch| question.id == ch.question_id }.map do |choice|
         response = Response.new(survey_id: Survey.max(:id).to_i.next, question_id: question.id, choice_id: params[question.id.to_s])
         responses.merge(response)
-        outcomes = Outcome.select { |out| choice.id == out.choice_id }
-        outcomes.map do |outcome|
-          results[outcome.career_id] =+ 1
+        outcomes.select { |out| choice.id == out.choice_id }.map do |outcome|
+          results[outcome.career_id] += 1
         end
       end
     end
