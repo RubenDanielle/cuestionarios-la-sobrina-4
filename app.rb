@@ -34,25 +34,23 @@ class App < Sinatra::Base
 
         Outcome.select { |out| choice.id == out.choice_id }.each do |outcome|
           if results[outcome.career_id] != nil
-            results[outcome.career_id] += 1
+            results[outcome.career_id] = 1+ results[outcome.career_id]
           end
         end
 
       end
     end
-    response.inspect
 
-    #resulting_career = @results.key(@results.values.max)
-    #resulting_career.inspect
-    #survey = Survey.new(career_id: resulting_career, username: params['username'])
-    #if survey.save
-    #  responses.map do |resp|
-    #    resp.save
-    #  end
-    #  [201, {'Location' => "surveys/#{survey.id}"}, 'Cuestionario guardado, su carrera resultante es ' + Career[resulting_career][:name]]
-    #else
-    #  [500, {}, 'Internal Server Error']
-    #end  
+    resulting_career = results.key(results.values.max)
+    survey = Survey.new(career_id: resulting_career, username: params['username'])
+    if survey.save
+      responses.map do |resp|
+        resp.save
+      end
+      [201, {'Location' => "surveys/#{survey.id}"}, 'Cuestionario guardado, su carrera resultante es ' + Career[resulting_career][:name]]
+    else
+      [500, {}, 'Internal Server Error']
+    end  
   end
 
   get "/surveys" do
