@@ -20,33 +20,30 @@ class App < Sinatra::Base
   post "/surveys" do 
     results = {}
 
+    #crear el hash que sirve de contador para los resultados de cada carrera
     Career.each do |career|
       results[career.id] = 0
     end
 
-    responses = {}
-
-    Question.each do |question| 
-      Choice.select {|ch| question.id == ch.question_id }.each do |choice|
-        response = Response.new(survey_id: Survey.max(:id).to_i.next, question_id: question.id, choice_id: params[:"#{question.id}"])
-        
-        responses.merge(response)
-
-        Outcome.select { |out| choice.id == out.choice_id }.each do |outcome|
-          if results[outcome.career_id] != nil
-            results[outcome.career_id] = 1+ results[outcome.career_id]
-          end
+    # sumar el contador de cada carrera dependiendo de las respuestas dadas
+    Question.all.each do |question| 
+        choice_selected = params[:"#{question.id}"].to_i
+        Outcome.all.select { |out| choice_selected == out.choice_id }.each do |outcome|
+          results[outcome.career_id] += 1
         end
-
-      end
     end
 
+    # guardar como resultado del cuestionario realizado por el usuario la carrera con la max punt
     resulting_career = results.key(results.values.max)
     survey = Survey.new(career_id: resulting_career, username: params['username'])
+
     if survey.save
-      responses.map do |resp|
-        resp.save
+      # guardar todas las respuestas dadas por el usuario
+      Question.all.each do |question2|
+        response = Response.new(survey_id: survey.id, question_id: question2.id, choice_id: params[:"#{question2.id}"])
+        response.save
       end
+
       [201, {'Location' => "surveys/#{survey.id}"}, 'Cuestionario guardado, su carrera resultante es ' + Career[resulting_career][:name]]
     else
       [500, {}, 'Internal Server Error']

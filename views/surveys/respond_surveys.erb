@@ -16,6 +16,7 @@
 					 <%=question.description%>
 					 <ul>
 						 <% @choices.select {|ch| question.id == ch.question_id }.map do |choice| %>
+						 	
 						 	<label class="container"><%=choice.text%>
 						 		<input type="radio" name = <%=question.id%> value = <%=choice.id%> required >
 						 		<span class="custom_radio_button"></span>
