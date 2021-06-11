@@ -18,34 +18,41 @@ class App < Sinatra::Base
   end
 
   post "/surveys" do 
-    questions = Question.all
-    careers = Career.all
     results = {}
-    responses = {}
-    outcomes = Outcome.all
-    value = 0
-    careers.map do |career|
+
+    Career.each do |career|
       results[career.id] = 0
     end
-    questions.map do |question| 
-      choices = Choice.select {|ch| question.id == ch.question_id }.map do |choice|
-        response = Response.new(survey_id: Survey.max(:id).to_i.next, question_id: question.id, choice_id: params[question.id.to_s])
+
+    responses = {}
+
+    Question.each do |question| 
+      Choice.select {|ch| question.id == ch.question_id }.each do |choice|
+        response = Response.new(survey_id: Survey.max(:id).to_i.next, question_id: question.id, choice_id: params[:"#{question.id}"])
+        
         responses.merge(response)
-        outcomes.select { |out| choice.id == out.choice_id }.map do |outcome|
-          results[outcome.career_id] += 1
+
+        Outcome.select { |out| choice.id == out.choice_id }.each do |outcome|
+          if results[outcome.career_id] != nil
+            results[outcome.career_id] += 1
+          end
         end
+
       end
     end
-    resulting_career = results.key(results.values.max)
-    survey = Survey.new(career_id: resulting_career, username: params['username'])
-    if survey.save
-      responses.map do |resp|
-        resp.save
-      end
-      [201, {'Location' => "surveys/#{survey.id}"}, 'Cuestionario guardado, su carrera resultante es ' + careers[resulting_career].name]
-    else
-      [500, {}, 'Internal Server Error']
-    end  
+    response.inspect
+
+    #resulting_career = @results.key(@results.values.max)
+    #resulting_career.inspect
+    #survey = Survey.new(career_id: resulting_career, username: params['username'])
+    #if survey.save
+    #  responses.map do |resp|
+    #    resp.save
+    #  end
+    #  [201, {'Location' => "surveys/#{survey.id}"}, 'Cuestionario guardado, su carrera resultante es ' + Career[resulting_career][:name]]
+    #else
+    #  [500, {}, 'Internal Server Error']
+    #end  
   end
 
   get "/surveys" do

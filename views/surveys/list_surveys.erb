@@ -14,7 +14,7 @@
         <% @careers.map do |career| %>
             <p><a href="careers/<%= career.id %>"> <%= career.name %></a></p>
             <ul>
-                <% @surveys.map do |survey| %>
+                <% @surveys.select{|s| s.career_id == career.id}.map do |survey| %>
                     <li>
                         <%= survey.username %>
                     </li>
