@@ -1,0 +1,49 @@
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik/Rubik-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Courgette";
+  src: url("../fonts/Courgette/Courgette-Regular.ttf");
+}
+
+body{
+    background: #d1e0f2;
+    background-size:contain;
+    background-position-y: 200px;
+    background-repeat: no-repeat;
+}
+
+h1{
+    text-align: center;
+    padding: 8px;
+    margin-top: 30px;
+    max-width: 8000px;
+    font-size: 40px;
+    font-weight: normal;
+    line-height: 0px;
+    font-family: "Rubik";
+}
+
+h2{
+    text-align: center;
+    padding: 8px;
+    margin: 70px;
+    max-width: 8000px;
+    text-decoration: underline;
+    font-size: 70px;
+    font-weight: normal;
+    line-height: 0px;
+    font-family: "Courgette";
+}
+
+p{
+    text-align: center;
+    padding: 8px;
+    max-width: 8000px;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 0px;
+    font-family: "Rubik";
+}

@@ -43,8 +43,8 @@ class App < Sinatra::Base
         response = Response.new(survey_id: survey.id, question_id: question2.id, choice_id: params[:"#{question2.id}"])
         response.save
       end
-
-      [201, {'Location' => "surveys/#{survey.id}"}, 'Cuestionario guardado, su carrera resultante es ' + Career[resulting_career][:name]]
+      @resultadoFinal = Career[resulting_career][:name]
+      erb :'surveys/result'
     else
       [500, {}, 'Internal Server Error']
     end  
