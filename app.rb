@@ -8,11 +8,13 @@ class App < Sinatra::Base
 
 
   get "/careers" do
+    # en esta ruta se listan todas las carreras cargadas a la base de datos.
     @careers=Career.all
     erb :'careers/list_careers'
   end
 
   get "/careers/:id" do
+    # Dado un id de una carrera, la obtiene de la base de datos y muestra sus datos
     @career = Career.where(id: params['id']).last
     erb :'careers/career_data'
   end
@@ -38,24 +40,36 @@ class App < Sinatra::Base
     survey = Survey.new(career_id: resulting_career, username: params['username'])
 
     if survey.save
+
       # guardar todas las respuestas dadas por el usuario
-      Question.all.each do |question2|
-        response = Response.new(survey_id: survey.id, question_id: question2.id, choice_id: params[:"#{question2.id}"])
-        response.save
-      end
+      load_responses(params, survey.id)
       @resultadoFinal = Career[resulting_career][:name]
+      # mostrar la carrera resultante
       erb :'surveys/result'
+
     else
       [500, {}, 'Internal Server Error']
     end  
   end
 
+  # funcion utilizada para cargar las respuestas dadas por un usuario a las preguntas de
+  # un cuestionario, se deben pasar como parametros un hash con las respuestas y el 
+  # cuestionario respondido
+  def load_responses(parameters, survey_id)
+    Question.all.each do |question|
+      response = Response.new(survey_id: survey_id, question_id: question.id, choice_id: parameters[:"#{question.id}"])
+      response.save
+    end
+  end
+
+  # listado de carreras y usuarios que obtuvieron cada una
   get "/surveys" do
     @careers=Career.all
     @surveys=Survey.all
     erb :'surveys/list_surveys'
   end
 
+  # formulario para responder un cuestionario
   get "/respond_surveys" do
     @questions = Question.all
     @choices = Choice.all
@@ -77,5 +91,6 @@ class App < Sinatra::Base
     p = Post.where(id: 1).last
     p.description
   end
+
 end
 

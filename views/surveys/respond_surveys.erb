@@ -7,13 +7,17 @@
 	</head>
 	<body>
 		<form action ='/surveys' method="POST" class = "survey">
+			<!-- Campo de texto en el que se ingresa el nombre de usuario. No se permite cargar las respuestas si este campo esta vacio. -->
 			<label for = "username" class="text_field">Ingrese un nombre de usuario: 
 				<input type="text" name = "username" id = "username" required>
 			</label>
 			<ul>
+			<!-- Se recorre cada una de las preguntas cargadas en la base de datos,
+			 y se muestra su numero y nombre.-->
 			<% @questions.map do |question| %>
 				<li> <%=question.name%>: <br> 
 					 <%=question.description%>
+					 <!-- Se crea un boton radial para cada eleccion asociada a cada pregunta. Cada boton tiene como leyenda el texto de la eleccion. La seleccion de uno de los botones de cada pregunta es obligatoria. -->
 					 <ul>
 						 <% @choices.select {|ch| question.id == ch.question_id }.map do |choice| %>
 						 	
