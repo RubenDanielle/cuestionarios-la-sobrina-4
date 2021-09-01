@@ -22,20 +22,10 @@ class App < Sinatra::Base
   post "/surveys" do 
     results = {}
 
-    #crear el hash que sirve de contador para los resultados de cada carrera
-    Career.each do |career|
-      results[career.id] = 0
-    end
+    # calcular la puntuacion del usuario en cada carrera
+    results = Career.countUserPointsOnEachCareer(results, params)
 
-    # sumar el contador de cada carrera dependiendo de las respuestas dadas
-    Question.all.each do |question| 
-        choice_selected = params[:"#{question.id}"].to_i
-        Outcome.all.select { |out| choice_selected == out.choice_id }.each do |outcome|
-          results[outcome.career_id] += 1
-        end
-    end
-
-    # guardar como resultado del cuestionario realizado por el usuario la carrera con la max punt
+    # guardar como resultado del cuestionario realizado por el usuario la carrera con la max puntuacion
     resulting_career = results.key(results.values.max)
     survey = Survey.new(career_id: resulting_career, username: params['username'])
 
