@@ -4,71 +4,152 @@
 }
 
 body{
-    background: #d1e0f2;
-    background-size:contain;
-    background-position-y: 200px;
-    background-repeat: no-repeat;
+    font-family: Rubik;
+    color: #333;
+    font-size: 1.2rem;
+    margin: 0;
 }
 
-.sis{
-    width: 20px;
-    height: auto;
-    display: left;
+.container{
+    width: 85%;
+    max-width: 850px;
+    margin: 0px auto;
 }
 
-h1{
-    text-align: center;
-    padding: 8px;
-    max-width: 8000px;
-    font-size: 50px;
-    font-weight: normal;
-    line-height: 0px;
+.header{
+    background: #bdcfd2;
     font-family: "Rubik";
-}
-
-.encabezado{
-    font-size: 30px;
+    color: white;
+    padding: 0.5rem 0;
+    font-size: 16px;
     margin: 10px;
     text-align: center;
-    font-family: 'Rubik';
+
+}
+    .header a{
+        color: #262929;
+        text-decoration: none;
 }
 
-ul {
-    list-style-type: none;
+.logo-nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.navigation ul {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    background-color:black;
-    border: 1px solid white;
-    font-family: 'Lucida Sans';
+    list-style: none;
 }
 
-li {
-    float: left;
-    width: 16.66%;
-}
+    .navigation ul li{
+        display: inline-block;
+    }
+        .navigation ul li a{
+            display: block;
+            padding: 0.5rem 1rem;
+            transition: all 0.4s linear;
+            border-radius: 5px;
+        }
 
-li a {
-    display: block;
-    color: white;
+            .navigation ul li a:hover{
+                background: #4a4a4a;
+            }
+
+footer{
+    background: #bdcfd2;
+    margin: 10px 10px;
+    padding: 0.5rem 0;
     text-align: center;
-    padding: 15px 30px;
-    text-decoration: none;
 }
 
-li a:hover {
-    background-color:gray;
+* {
+  box-sizing: border-box;
 }
 
-h2{
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
     
+  display: none;
 }
 
-.logoUni{
-    display:block;
-    margin-left: auto;
-    margin-right: auto;
-    opacity: 0.5;
-    filter: alpha(opacity = 50);    
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
 }
 
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
