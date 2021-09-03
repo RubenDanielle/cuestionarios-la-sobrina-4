@@ -19,6 +19,20 @@ class App < Sinatra::Base
     erb :'careers/career_data'
   end
 
+  # listado de carreras y usuarios que obtuvieron cada una
+  get "/surveys" do
+    @careers=Career.all
+    @surveys=Survey.all
+    erb :'surveys/list_surveys'
+  end
+
+  # formulario para responder un cuestionario
+  get "/respond_surveys" do
+    @questions = Question.all
+    @choices = Choice.all
+    erb :'surveys/respond_surveys' 
+  end
+  
   post "/surveys" do 
     results = {}
 
@@ -62,19 +76,6 @@ class App < Sinatra::Base
     end
   end
 
-  # listado de carreras y usuarios que obtuvieron cada una
-  get "/surveys" do
-    @careers=Career.all
-    @surveys=Survey.all
-    erb :'surveys/list_surveys'
-  end
-
-  # formulario para responder un cuestionario
-  get "/respond_surveys" do
-    @questions = Question.all
-    @choices = Choice.all
-    erb :'surveys/respond_surveys' 
-  end
 
   post "/posts" do
     request.body.rewind  # in case someone already read it
