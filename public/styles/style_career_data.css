@@ -2,13 +2,26 @@
     font-family: "Rubik";
     src: url("../fonts/Rubik/Rubik-VariableFont_wght.ttf");
 }
+html, body {
+    height:100%;
+}
+
 
 body{
-    background: #d1e0f2;
-    background-size: contain;
-    background-position-y: 200px;
-    background-repeat: no-repeat;
+    font-family: Rubik;
+    background-image: linear-gradient(#bdcfd2, white);
+    background-color: #bdcfd2;
+    font-size: 1.2rem;
+    margin: 0;
 }
+
+
+.container{
+    width: 85%;
+    max-width: 850px;
+    margin: 0px auto;
+}
+
 
 h1{
     text-align: center;

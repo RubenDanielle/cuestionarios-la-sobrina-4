@@ -3,15 +3,66 @@
     src: url("../fonts/Rubik/Rubik-VariableFont_wght.ttf");
 }
 
+
 body{
+    font-family: Rubik;
+    /*background-image: linear-gradient(#bdcfd2, white);*/
+    background-color: white;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.head{
+    background: #bdcfd2;
+    font-family: "Rubik";
+    color: black;
+    padding: 0.4rem 0;
+    font-size: 16px;
+    margin: 10px;
+    text-align: center;
+
+}
+
+.caja{
+  padding: 0.4rem 0;
+  margin: 10px;
+  /*border: 1px dotted grey;*/
+  font-family: "Rubik";
+  color: black;
+  font-size: 18px;
+  text-align: left;
+}
+  .caja a{
+    color: #262929;
+    text-decoration: none;
+  }
+
+.container{
+    width: 85%;
+    max-width: 850px;
+    margin: 0px auto;
+    text-align: center;
+}
+
+hr {
+    height: 8px;
+    // background-color: red;
+    background-image: linear-gradient(90deg, lightblue, transparent);
+
+    border: 0;
+    height: 1px;
+}
+/*body{
     background: #d1e0f2;
     background-size: contain;
     background-position-y: 200px;
     background-repeat: no-repeat;
 }
+*/
 
 h1{
     text-align: center;
+    color:#262929;
     padding: 8px;
     margin-top: 30px;
     max-width: 8000px;
@@ -53,10 +104,10 @@ li a:hover {
   margin-top: 8px;
   font-size: 17px;
   border: none;
-  width: 150px; 
+  width: 150px;
 }
 
-.container {
+/*.container {
   display: block;
   position: relative;
   padding-left: 35px;
@@ -67,7 +118,7 @@ li a:hover {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
+}*/
 
 .container input {
   position: absolute;
@@ -115,4 +166,4 @@ li a:hover {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-} 
+}

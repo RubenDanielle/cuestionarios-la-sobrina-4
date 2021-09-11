@@ -9,13 +9,20 @@
 		<link rel="shortcut icon" href="images/UNRC-color.png">
 	</head>
 	<body>
-		<h1>Carreras disponibles</h1>
-		<ul>
-			<% @careers.map do |career| %>
-		 		<li>
-		 			<a href="careers/<%= career.id%>"> <%= career.name %></a>
-		 		</li>
-		 	<%end%>
-		</ul>
+		<div class="head">
+			<h1>Listado de carreras:</h1>
+		</div>
+
+		<div class="container">
+
+			<ul>
+				<% @careers.map do |career| %>
+						<div class="caja">
+								<a href="careers/<%= career.id%>"> <%= career.name %></a><hr/>
+						</div>
+
+			 	<%end%>
+			</ul>
+		</div>
 	</body>
 </html>
