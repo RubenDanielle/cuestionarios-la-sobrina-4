@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="styles/style_list_careers.css">
+		<link rel="stylesheet" type="text/css" href="styles/style_respond_survey.css">
 		<title>Completar cuestionario</title>
 		<link rel="shortcut icon" href="images/UNRC-color.png">
 	</head>
 	<body>
-		<form action ='/surveys' method="POST" class = "survey">
-			<!-- Campo de texto en el que se ingresa el nombre de usuario. No se permite cargar las respuestas si este campo esta vacio. -->
-			<label for = "username" class="text_field">Ingrese un nombre de usuario: 
-				<input type="text" name = "username" id = "username" required>
-			</label>
-			<ul>
-			<!-- Se recorre cada una de las preguntas cargadas en la base de datos,
-			 y se muestra su numero y nombre.-->
-			<% @questions.map do |question| %>
-				<li> <%=question.name%>: <br> 
-					 <%=question.description%>
-					 <!-- Se crea un boton radial para cada eleccion asociada a cada pregunta. Cada boton tiene como leyenda el texto de la eleccion. La seleccion de uno de los botones de cada pregunta es obligatoria. -->
-					 <ul>
-						 <% @choices.select {|ch| question.id == ch.question_id }.map do |choice| %>
-						 	
-						 	<label class="container"><%=choice.text%>
-						 		<input type="radio" name = <%=question.id%> value = <%=choice.id%> required >
-						 		<span class="custom_radio_button"></span>
-							</label>
+		<div class="head">
+				<h1>Test de orientacion vocacional</h1>
+		</div>
+		<div class="container">
+			<form action ='/surveys' method="POST" class = "survey">
+				<!-- Campo de texto en el que se ingresa el nombre de usuario. No se permite cargar las respuestas si este campo esta vacio. -->
+				<label for = "username" class="text_field">Ingrese un nombre de usuario:
+					<input type="text" name = "username" id = "username" required>
+				</label>
+				<ul>
+				<!-- Se recorre cada una de las preguntas cargadas en la base de datos,
+				 y se muestra su numero y nombre.-->
+				<% @questions.map do |question| %>
+					<div class="preg">
+						<li> <%=question.name%>: <br>
+							 <%=question.description%>
+					</div>
+						 <!-- Se crea un boton radial para cada eleccion asociada a cada pregunta. Cada boton tiene como leyenda el texto de la eleccion. La seleccion de uno de los botones de cada pregunta es obligatoria. -->
+						 <div class=resp>
+						 <ul>
+							 <% @choices.select {|ch| question.id == ch.question_id }.map do |choice| %>
 
-						 <%end%>
-					</ul>
-			<%end%>
-			</ul>
-			<input type="submit" value = 'Enviar respuestas'>
-		</form>
+							 	<div class="resp">
+									<input type="radio" name = <%=question.id%> value = <%=choice.id%> required >
+
+										
+										<label for="respuestas"><%=choice.text%></label>
+
+								 		<span class="custom_radio_button"></span>
+							 	</div>
+
+
+							 <%end%>
+						</ul>
+						</div>
+				<%end%>
+				</ul>
+				<input type="submit" value = 'Enviar respuestas'>
+			</form>
+		</div>
+
 	</body>
 </html>
-
