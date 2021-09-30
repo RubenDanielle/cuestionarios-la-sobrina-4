@@ -47,7 +47,7 @@
         </task>
         <task id="1" name="Mejorar vista de la pagina" color="#ffff33" meeting="false" start="2021-09-02" duration="8" complete="0" thirdDate="2021-09-13" thirdDate-constraint="0" expand="true"/>
         <task id="2" name="Optimizar codigo" color="#ff3333" meeting="false" start="2021-08-31" duration="4" complete="0" thirdDate="2021-09-13" thirdDate-constraint="0" expand="true"/>
-        <task id="3" name="Actualizar SRS" color="#8cb6ce" meeting="false" start="2021-09-10" duration="1" complete="0" thirdDate="2021-09-13" thirdDate-constraint="0" expand="true"/>
+        <task id="3" name="Actualizar SRS" color="#8cb6ce" meeting="false" start="2021-08-31" duration="1" complete="0" thirdDate="2021-09-13" thirdDate-constraint="0" expand="true"/>
     </tasks>
     <resources>
         <resource id="0" name="Ruben" function="SoftwareDevelopment:3" contacts="daniellerubenr@gmail.com" phone="3583400682">
