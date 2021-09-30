@@ -9,7 +9,6 @@
 
 body{
     font-family: Rubik;
-    /*background-image: linear-gradient(#bdcfd2, white);*/
     background-color: white;
     font-size: 1.2rem;
     margin: 0;
@@ -104,87 +103,3 @@ input[type="submit"]{
   cursor: pointer;
   text-align: center;
 }
-/*.resp{
-  display: block;
-   width: 100%;
-   border: none;
-   background-color: #04AA6D;
-   padding: 14px 28px;
-   font-size: 16px;
-   cursor: pointer;
-   text-align: center;
-}*/
-
-/*li a {
-    display: block;
-    color: black;
-    text-align: left;
-    padding: 15px 30px;
-    text-decoration: none;
-}
-
-li a:hover {
-    color: gray;
-}
-
-.text_field {
-    overflow: hidden;
-}
-
-.text_field input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-  width: 150px;
-}
-
-
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.custom_radio_button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    background-color: #eee;
-    border-radius: 50%;
-}*/
-
-/*.container:hover input ~ .custom_radio_button {
-  background-color: #ccc;
-}
-
-.container input:checked ~ .custom_radio_button {
-  background-color: #2196F3;
-}
-
-.custom_radio_button:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.container input:checked ~ .custom_radio_button:after {
-  display: block;
-}
-
-.container .custom_radio_button:after {
-  left: 7px;
-  top: 5px;
-  width: 3px;
-  height: 6px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-*/
