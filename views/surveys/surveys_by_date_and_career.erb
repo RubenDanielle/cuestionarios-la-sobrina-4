@@ -9,11 +9,11 @@
     </title>
 </head>
 <body>
-	<h1>Usuarios que obtuvieron la carrera <%= @career_name %> entre los dias <%= @first_date %> y <%= @last_date %>:</h1>
+	<h1>Usuarios que obtuvieron la carrera <%= @career_name %> entre los dias <%= @first_date.to_date() %> y <%= @last_date.to_date() %>:</h1>
 
 	<ul>
         <% @surveys.map do |survey| %>
-            <p><%= survey.username %>: <%= survey.created_at %></p>
+            <p><%= survey.username %>: <%= survey.created_at.to_date() %></p>
         <%end%>
     </ul>
 </body>
