@@ -9,12 +9,16 @@
     </title>
 </head>
 <body>
-	<h1>Usuarios que obtuvieron la carrera <%= @career_name %> entre los dias <%= @first_date.to_date() %> y <%= @last_date.to_date() %>:</h1>
+    <h1>Usuarios que obtuvieron la carrera <%= @career_name %> entre los días <%= @first_date.to_date() %> y <%= @last_date.to_date() %>:</h1>
+    <% if @surveys <> nil do %>
 
-	<ul>
-        <% @surveys.map do |survey| %>
-            <p><%= survey.username %>: <%= survey.created_at.to_date() %></p>
-        <%end%>
-    </ul>
+    	<ul>
+            <% @surveys.map do |survey| %>
+                <p><%= survey.username %>: <%= survey.created_at.to_date() %></p>
+            <%end%>
+        </ul>
+    <% else %>
+        <h2> No se ha encontrado una respuesta de cuestionario que coincida con los parámetros dados. </h2>
+    <% end %>
 </body>
 </html>
