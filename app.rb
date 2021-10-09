@@ -82,6 +82,12 @@ class App < Sinatra::Base
     p = Post.where(id: 1).last
     p.description
   end
+  
+  get '/surveys_by_date_and_career' do
+    @surveys = Survey.all
+    @careers = Career.all
+    erb :'surveys/surveys_by_date_and_career'
+  end
 
 end
 
