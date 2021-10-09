@@ -83,5 +83,17 @@ class App < Sinatra::Base
     p.description
   end
 
+  get '/surveys_get_career_and_dates' do
+    @surveys = Survey.all
+    @careers = Career.all
+    erb :'surveys/get_career_and_dates'
+  end
+  get '/surveys/:careerId/from/:firstDate/to/:lastDate' do
+    @career_name = Career.where(id: params['careerId'].to_i()).last.name
+    @surveys = Survey.where(Sequel.lit('career_id = ? AND created_at > ? AND created_at < ?', params[:careerId].to_i(), Time.parse(params[:firstDate]), Time.parse(params[:lastDate])))
+    @first_date = Time.parse(params['firstDate'])
+    @last_date = Time.parse(params['lastDate'])
+    erb :'surveys/surveys_by_date_and_career'
+  end
 end
 
