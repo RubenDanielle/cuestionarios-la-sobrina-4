@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    	Busqueda de cuestionarios
+    </title>
+</head>
+<body>
+    <h1>Seleccione los datos para realizar la búsqueda</h1>
+    <form id="form" class="career_and_dates_form" action="/surveys/search">
+        <div class="data_select">
+            <div class="career_select">
+                <legend>Carrera: </legend>
+                <select id='career_selector' name='career'>
+                    <% @careers.each do |career| %>
+                        <option value=<%= career.id %>><%= career.name %></option>
+                    <% end %>
+                </select>
+            </div>
+            <div class="first_date_select">
+                <legend>Desde: </legend>
+                <input id="fdate" name="fdate" class="DateInput_first" type="date" placeholder="Seleccione Fecha" autocomplete="off" value="">
+            </div>
+            <div class="last_date_select">
+                <legend>Hasta: </legend>
+                <input id="ldate" name="ldate" class="DateInput_last" type="date" placeholder="Seleccione Fecha" autocomplete="off" value="">
+            </div>
+            <div class="confirm_search_button">
+                <button id="search_button" type="submit" class="search-btn">Buscar Cuestionarios</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
