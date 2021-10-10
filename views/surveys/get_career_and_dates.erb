@@ -14,7 +14,7 @@
         <div class="data_select">
             <div class="career_select">
                 <legend>Carrera: </legend>
-                <select id='career_selector' name='career'>
+                <select id='career_selector' name='careerId'>
                     <% @careers.each do |career| %>
                         <option value=<%= career.id %>><%= career.name %></option>
                     <% end %>
@@ -22,11 +22,11 @@
             </div>
             <div class="first_date_select">
                 <legend>Desde: </legend>
-                <input id="fdate" name="fdate" class="DateInput_first" type="date" placeholder="Seleccione Fecha" autocomplete="off" value="">
+                <input id="fdate" name="firstDate" class="DateInput_first" type="date" placeholder="Seleccione Fecha" autocomplete="off" value="">
             </div>
             <div class="last_date_select">
                 <legend>Hasta: </legend>
-                <input id="ldate" name="ldate" class="DateInput_last" type="date" placeholder="Seleccione Fecha" autocomplete="off" value="">
+                <input id="ldate" name="lastDate" class="DateInput_last" type="date" placeholder="Seleccione Fecha" autocomplete="off" value="">
             </div>
             <div class="confirm_search_button">
                 <button id="search_button" type="submit" class="search-btn">Buscar Cuestionarios</button>
