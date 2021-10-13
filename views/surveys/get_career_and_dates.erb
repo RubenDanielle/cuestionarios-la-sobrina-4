@@ -10,29 +10,34 @@
     </title>
 </head>
 <body>
-    <h1>Seleccione los datos para realizar la búsqueda</h1>
-    <form id="form" class="career_and_dates_form" action="/surveys/search">
-        <div class="data_select">
-            <div class="career_select">
-                <legend>Carrera: </legend>
-                <select id='career_selector' name='careerId'>
-                    <% @careers.each do |career| %>
-                        <option value=<%= career.id %>><%= career.name %></option>
-                    <% end %>
-                </select>
-            </div>
-            <div class="first_date_select">
-                <legend>Desde: </legend>
-                <input id="fdate" name="firstDate" class="DateInput_first" type="date" placeholder="Seleccione Fecha" autocomplete="off" value="">
-            </div>
-            <div class="last_date_select">
-                <legend>Hasta: </legend>
-                <input id="ldate" name="lastDate" class="DateInput_last" type="date" placeholder="Seleccione Fecha" autocomplete="off" value="">
-            </div>
-            <div class="confirm_search_button">
-                <button id="search_button" type="submit" class="search-btn">Buscar Cuestionarios</button>
-            </div>
-        </div>
-    </form>
+    <div class="head">
+        <h1>Seleccione los datos para realizar la búsqueda</h1>
+    </div>
+    <div class="container">
+        <form id="form" class="career_and_dates_form" action="/surveys/search">
+                <div class="career_select">
+                    <legend>Carrera: </legend>
+                    <select id='career_selector' name='careerId'>
+                        <% @careers.each do |career| %>
+                            <option value=<%= career.id %>><%= career.name %></option>
+                        <% end %>
+                    </select>
+                </div>
+                <div class="calendar">
+                    <div class="first_date_select">
+                        <legend>Desde: </legend>
+                        <input id="fdate" name="firstDate" class="DateInput_first" type="date" placeholder="Seleccione Fecha" autocomplete="off" value="">
+                    </div>
+                    <div class="last_date_select">
+                        <legend>Hasta: </legend>
+                        <input id="ldate" name="lastDate" class="DateInput_last" type="date" placeholder="Seleccione Fecha" autocomplete="off" value="">
+                    </div>
+                </div>
+                <div class="confirm_search_button">
+                    <input type="submit" value='Buscar Cuestionarios'>
+                </div>
+        </form>
+    </div>
+    <script src="js/surveys_by_date.js"></script>
 </body>
 </html>
