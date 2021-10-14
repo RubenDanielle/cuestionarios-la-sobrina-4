@@ -4,20 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/styles/style_result_surveys_by_date.css">
     <title>
     	Resultado de la busqueda
     </title>
 </head>
 <body>
-    <h1>Usuarios que obtuvieron la carrera <%= @career_name %> entre los días <%= @first_date.to_date() %> y <%= @last_date.to_date() %>:</h1>
-    <% if @surveys != nil %>
-    	<ul>
-            <% @surveys.map do |survey| %>
-                <p><%= survey.username %>: <%= survey.created_at.to_date() %></p>
-            <%end%>
-        </ul>
-    <% else %>
-        <h2> No se ha encontrado una respuesta de cuestionario que coincida con los parámetros dados. </h2>
-    <% end %>
+    <div class="head">
+        <h1>Resultados de la busqueda:</h1>
+    </div>
+    <div class="container">
+        <h2>Usuarios que obtuvieron la carrera <%= @career_name %> entre los días <%= @first_date.to_date() %> y <%= @last_date.to_date() %>:</h2>
+        <% if @surveys != nil %>
+        <div class="tabla"> 
+            <table>
+                <thead>
+                    <tr>
+                        <th>Usuario</th><th>Fecha</th>
+                    </tr>
+                </thead>
+                <% @surveys.map do |survey| %>
+                    <tr><td><%= survey.username %></td> <td><%= survey.created_at.to_date() %></td>
+                <%end%>
+            </table>
+        </div>
+        <% else %>
+            <h2> No se ha encontrado una respuesta de cuestionario que coincida con los parámetros dados. </h2>
+        <% end %>
+    </div>
 </body>
 </html>
