@@ -90,7 +90,7 @@ class App < Sinatra::Base
   end
   get '/surveys/search' do
     @career_name = Career.where(id: params['careerId'].to_i()).last.name
-    @surveys = Survey.where(Sequel.lit('career_id = ? AND created_at > ? AND created_at < ?', params[:careerId].to_i(), Time.parse(params[:firstDate]), Time.parse(params[:lastDate])))
+    @surveys = Survey.where(Sequel.lit('career_id = ? AND created_at > ? AND created_at < ?', params[:careerId].to_i(), DateTime.parse(params[:firstDate]), DateTime.parse(params[:lastDate]).next_day))
     @first_date = Time.parse(params['firstDate'])
     @last_date = Time.parse(params['lastDate'])
     erb :'surveys/surveys_by_date_and_career'
