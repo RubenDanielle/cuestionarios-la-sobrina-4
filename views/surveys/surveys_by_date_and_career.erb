@@ -14,7 +14,7 @@
         <h1>Resultados de la busqueda:</h1>
     </div>
     <div class="container">
-        <h2>Usuarios que obtuvieron la carrera <%= @career_name %> entre los días <%= @first_date.to_date() %> y <%= @last_date.to_date() %>:</h2>
+        <h2>Usuarios que obtuvieron la carrera <%= @career_name %> entre los días <%= @first_date.to_date() %> y <%= @last_date.to_date() %>: <%= @number_of_surveys %> usuarios</h2>
         <% if @surveys != nil %>
         <div class="tabla"> 
             <table>
