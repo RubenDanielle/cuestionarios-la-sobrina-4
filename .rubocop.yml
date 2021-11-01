@@ -1,4 +1,4 @@
-inherit_from: /var/lib/gems/2.7.0/gems/rubocop-1.22.2/config/default.yml
+inherit_from: /usr/local/bundle/gems/rubocop-1.22.2/config/default.yml
 
 Layout/LineLength:
   Max: 80

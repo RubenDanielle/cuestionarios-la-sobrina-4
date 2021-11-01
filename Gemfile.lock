@@ -65,7 +65,7 @@ DEPENDENCIES
   puma (= 4.3.3)
   rack-test
   rerun
-  rubocop
+  rubocop (~> 1.22.2)
   sequel
   sinatra (= 2.0.7)
 

@@ -9,7 +9,7 @@ gem 'sequel'
 group :development do
   gem 'dotenv', '2.7.5'
   gem 'rerun'
-  gem 'rubocop', require: false
+  gem 'rubocop', '~>1.22.2', require: false
 end
 
 group :test do
