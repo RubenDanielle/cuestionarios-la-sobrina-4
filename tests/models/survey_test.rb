@@ -1,25 +1,25 @@
-require File.expand_path '../../test_helper.rb', __FILE__
+require File.expand_path '../test_helper.rb', __dir__
 
 class SurveyTest < MiniTest::Unit::TestCase
-  MiniTest::Unit::TestCase  
+  MiniTest::Unit::TestCase
 
   def test_survey_username_cannot_be_empty
     # Arrange
-    survey = Survey.new   
+    survey = Survey.new
 
     # Act
-    survey.username = ''    
+    survey.username = ''
 
     # Assert
     assert_equal survey.valid?, false
-  end  
+  end
 
   def test_survey_username_cannot_be_nil
     # Arrange
-    survey = Survey.new   
+    survey = Survey.new
 
     # Act
-    survey.username = nil   
+    survey.username = nil
 
     # Assert
     assert_equal survey.valid?, false
@@ -27,10 +27,10 @@ class SurveyTest < MiniTest::Unit::TestCase
 
   def test_survey_has_a_career
     # Arrange
-    survey = Survey.new    
+    survey = Survey.new
 
     # Act
-    survey.career_id = nil 
+    survey.career_id = nil
 
     # Assert
     assert_equal survey.valid?, false

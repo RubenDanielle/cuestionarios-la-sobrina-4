@@ -1,4 +1,8 @@
-inherit_from: /usr/local/bundle/gems/rubocop-1.22.2/config/default.yml
+inherit_from:
+  - .rubocop_todo.yml
+  - /usr/local/bundle/gems/rubocop-1.22.2/config/default.yml
+
+
 
 Layout/LineLength:
   Max: 80
@@ -32,7 +36,10 @@ Metrics/AbcSize:
   AutoCorrect: true
 
 Style/Documentation:
-  AutoCorrect: true
+  Enabled: false
 
 Style/Encoding:
+  Enabled: false
+  
+Style/FrozenStringLiteralComment:
   Enabled: false

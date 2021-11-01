@@ -1,10 +1,10 @@
 #clean dataset
-Response.all.map {|r| r.destroy}
-Survey.all.map {|s| s.destroy}
-Outcome.all.map {|o| o.destroy}
-Choice.all.map {|c| c.destroy}
-Question.all.map {|q| q.destroy}
-Career.all.map {|c| c.destroy}
+Response.all.map { |r| r.destroy }
+Survey.all.map { |s| s.destroy }
+Outcome.all.map { |o| o.destroy }
+Choice.all.map { |c| c.destroy }
+Question.all.map { |q| q.destroy }
+Career.all.map { |c| c.destroy }
 
 #create careers
 
@@ -14,7 +14,7 @@ arte         = Career.create(name: 'Arte')
 computacion  = Career.create(name: 'Computación')
 economia     = Career.create(name: 'Economía')
 edFisica     = Career.create(name: 'Educación Física')
-filosofia    = Career.create(name:'Filosofía')
+filosofia    = Career.create(name: 'Filosofía')
 fisica       = Career.create(name: 'Física')
 geologia     = Career.create(name: 'Geología')
 historia     = Career.create(name: 'Historia')
@@ -121,7 +121,7 @@ preg10 = Question.create(name: 'Pregunta N° 10', description: 'Me siento identi
     ch2_preg10 = Choice.create(text: 'No', question_id: preg10.id)
 
 #eleventh question
-preg11= Question.create(name: 'Pregunta Nº 11 ', description: 'Me encanta estudiar el cuerpo humano y conocer cómo funciona. Además, no me impresiona la sangre.', number: 11, type: 'Single Choice')
+preg11 = Question.create(name: 'Pregunta Nº 11 ', description: 'Me encanta estudiar el cuerpo humano y conocer cómo funciona. Además, no me impresiona la sangre.', number: 11, type: 'Single Choice')
     
     ch1_preg11 = Choice.create(text: 'Si', question_id: preg11.id)
         
