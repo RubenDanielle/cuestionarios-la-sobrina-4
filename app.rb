@@ -93,6 +93,7 @@ class App < Sinatra::Base
     @surveys = Survey.where(Sequel.lit('career_id = ? AND created_at > ? AND created_at < ?', params[:careerId].to_i(), DateTime.parse(params[:firstDate]), DateTime.parse(params[:lastDate]).next_day))
     @first_date = Time.parse(params['firstDate'])
     @last_date = Time.parse(params['lastDate'])
+    @number_of_surveys = @surveys.all.count
     erb :'surveys/surveys_by_date_and_career'
   end
 end
