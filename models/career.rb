@@ -7,23 +7,16 @@ class Career < Sequel::Model
     errors.add(:name, 'cannot be empty') if !name || name.empty?
   end
 
-  # funcion que toma un hash y devuelve un contador de
-  # la cantidad de puntos de cada carrera en base a las respuestas del cuestionario
-  def self.countUserPointsOnEachCareer(set, parameters)
+  def self.points_by_career(set, parameters)
     each do |career|
       set[career.id] = 0
     end
-
-    # sumar el contador de cada carrera dependiendo de las respuestas dadas
     Question.all.each do |question|
       choice_selected = parameters[:"#{question.id}"].to_i
-      Outcome.all.select do |out|
-        choice_selected == out.choice_id
-      end.each do |outcome|
-        set[outcome.career_id] += 1
+      outcomes = Outcome.where(choice_id: choice_selected)
+      outcomes.map { |outcome| set[outcome.career_id] += 1 }   
       end
     end
-
     set
   end
 end
