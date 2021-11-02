@@ -5,6 +5,10 @@ class App < Sinatra::Base
     erb :home
   end
 
+  def careers:
+    Career.all
+  end
+
   get '/careers' do
     @careers = Career.all
     erb :'careers/list_careers'
@@ -39,7 +43,6 @@ class App < Sinatra::Base
     else
       [500, {}, 'Internal Server Error']
     end
-  end
   end
 
   def load_responses(parameters, survey_id)
@@ -80,7 +83,7 @@ class App < Sinatra::Base
     @surveys = Survey.where(Sequel.lit(
                                query_constraint,
                                params[:careerId].to_i,
-                               @first_date]),
+                               @first_date,
                                @last_date.next_day))
     @number_of_surveys = @surveys.all.count
     erb :'surveys/surveys_by_date_and_career'
