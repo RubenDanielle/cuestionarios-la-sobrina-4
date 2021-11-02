@@ -1,0 +1,45 @@
+inherit_from:
+  - .rubocop_todo.yml
+  - /usr/local/bundle/gems/rubocop-1.22.2/config/default.yml
+
+
+
+Layout/LineLength:
+  Max: 80
+  Exclude:
+    - 'db/seeds.rb'
+
+Layout/IndentationConsistency:
+  Exclude:
+    - 'db/seeds.rb'
+
+Layout/LeadingCommentSpace:
+  Exclude:
+    - 'db/seeds.rb'
+
+Layout/TrailingEmptyLines:
+  Exclude:
+    - 'db/seeds.rb'
+
+Layout/TrailingWhitespace:
+  Exclude:
+    - 'db/seeds.rb'
+
+Lint/UselessAssignment:
+  Exclude:
+    - 'db/seeds.rb'
+
+Lint/Void:
+  AutoCorrect: true
+
+Metrics/AbcSize:
+  AutoCorrect: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/Encoding:
+  Enabled: false
+  
+Style/FrozenStringLiteralComment:
+  Enabled: false

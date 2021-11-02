@@ -1,24 +1,25 @@
-require File.expand_path '../../test_helper.rb', __FILE__
+require File.expand_path '../test_helper.rb', __dir__
 
 class QuestionTest < MiniTest::Unit::TestCase
-  MiniTest::Unit::TestCase  
+  MiniTest::Unit::TestCase
 
   def test_question_must_have_number
     # Arrange
-    question = Question.new    
+    question = Question.new
 
     # Act
-    question.number = nil 
+    question.number = nil
 
     # Assert
     assert_equal question.valid?, false
   end
+
   def test_question_name_cannot_be_empty
-  	# Arrange
-    question = Question.new    
+    # Arrange
+    question = Question.new
 
     # Act
-    question.name = '' 
+    question.name = ''
 
     # Assert
     assert_equal question.valid?, false
@@ -26,10 +27,10 @@ class QuestionTest < MiniTest::Unit::TestCase
 
   def test_question_name_cannot_be_nil
     # Arrange
-    question = Question.new    
+    question = Question.new
 
     # Act
-    question.name = nil 
+    question.name = nil
 
     # Assert
     assert_equal question.valid?, false
@@ -37,10 +38,10 @@ class QuestionTest < MiniTest::Unit::TestCase
 
   def test_question_type_cannot_be_nil
     # Arrange
-    question = Question.new    
+    question = Question.new
 
     # Act
-    question.type = nil 
+    question.type = nil
 
     # Assert
     assert_equal question.valid?, false
@@ -48,10 +49,10 @@ class QuestionTest < MiniTest::Unit::TestCase
 
   def test_question_type_cannot_be_empty
     # Arrange
-    question = Question.new    
+    question = Question.new
 
     # Act
-    question.type = '' 
+    question.type = ''
 
     # Assert
     assert_equal question.valid?, false

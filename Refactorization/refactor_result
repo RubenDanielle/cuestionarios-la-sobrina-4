@@ -1,0 +1,991 @@
+Inspecting 30 files
+CCCC.CCCCCCCCCCCCCC.CCCWWWWWWC
+
+Offenses:
+
+Gemfile:6:1: C: [Correctable] Bundler/OrderedGems: Gems should be sorted in an alphabetical order within their section of the Gemfile. Gem pg should appear before sinatra.
+gem 'pg'
+^^^^^^^^
+app.rb:1:23: C: [Correctable] Style/RedundantFileExtensionInRequire: Redundant .rb file extension detected.
+require './models/init.rb'
+                      ^^^
+app.rb:4:1: C: [Correctable] Layout/EmptyLinesAroundClassBody: Extra empty line detected at class body beginning.
+app.rb:7:6: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+  end  
+     ^^
+app.rb:9:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.
+app.rb:10:7: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/careers" do
+      ^^^^^^^^^^
+app.rb:12:13: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    @careers=Career.all
+            ^
+app.rb:16:7: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/careers/:id" do
+      ^^^^^^^^^^^^^^
+app.rb:17:81: C: Layout/LineLength: Line is too long. [83/80]
+    # Dado un id de una carrera, la obtiene de la base de datos y muestra sus datos
+                                                                                ^^^
+app.rb:23:7: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/surveys" do
+      ^^^^^^^^^^
+app.rb:24:13: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    @careers=Career.all
+            ^
+app.rb:25:13: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    @surveys=Survey.all
+            ^
+app.rb:30:7: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/respond_surveys" do
+      ^^^^^^^^^^^^^^^^^^
+app.rb:33:35: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    erb :'surveys/respond_surveys' 
+                                  ^
+app.rb:35:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app.rb:36:8: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  post "/surveys" do 
+       ^^^^^^^^^^
+app.rb:36:21: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+  post "/surveys" do 
+                    ^
+app.rb:42:81: C: Layout/LineLength: Line is too long. [103/80]
+    # guardar como resultado del cuestionario realizado por el usuario la carrera con la max puntuacion
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:44:81: C: [Correctable] Layout/LineLength: Line is too long. [82/80]
+    survey = Survey.new(career_id: resulting_career, username: params['username'])
+                                                                                ^^
+app.rb:50:7: C: Naming/VariableName: Use snake_case for variable names.
+      @resultadoFinal = Career[resulting_career][:name]
+      ^^^^^^^^^^^^^^^
+app.rb:56:8: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    end  
+       ^^
+app.rb:59:81: C: Layout/LineLength: Line is too long. [88/80]
+  # funcion utilizada para cargar las respuestas dadas por un usuario a las preguntas de
+                                                                                ^^^^^^^^
+app.rb:60:81: C: Layout/LineLength: Line is too long. [84/80]
+  # un cuestionario, se deben pasar como parametros un hash con las respuestas y el 
+                                                                                ^^^^
+app.rb:60:84: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+  # un cuestionario, se deben pasar como parametros un hash con las respuestas y el 
+                                                                                   ^
+app.rb:64:81: C: [Correctable] Layout/LineLength: Line is too long. [119/80]
+      response = Response.new(survey_id: survey_id, question_id: question.id, choice_id: parameters[:"#{question.id}"])
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:69:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.
+app.rb:70:8: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  post "/posts" do
+       ^^^^^^^^
+app.rb:92:60: C: [Correctable] Style/MethodCallWithoutArgsParentheses: Do not use parentheses for method calls with no arguments.
+    @career_name = Career.where(id: params['careerId'].to_i()).last.name
+                                                           ^^
+app.rb:93:81: C: [Correctable] Layout/LineLength: Line is too long. [200/80]
+    @surveys = Survey.where(Sequel.lit('career_id = ? AND created_at > ? AND created_at < ?', params[:careerId].to_i(), DateTime.parse(params[:firstDate]), DateTime.parse(params[:lastDate]).next_day))
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:93:117: C: [Correctable] Style/MethodCallWithoutArgsParentheses: Do not use parentheses for method calls with no arguments.
+    @surveys = Survey.where(Sequel.lit('career_id = ? AND created_at > ? AND created_at < ?', params[:careerId].to_i(), DateTime.parse(params[:firstDate]), DateTime.parse(params[:lastDate]).next_day))
+                                                                                                                    ^^
+app.rb:100:1: C: [Correctable] Layout/TrailingEmptyLines: 1 trailing blank lines detected.
+config.ru:1:9: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+require "bundler"
+        ^^^^^^^^^
+config.ru:2:9: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+require "sinatra"
+        ^^^^^^^^^
+config.ru:13:20: C: [Correctable] Layout/MultilineMethodCallBraceLayout: Closing method call brace must be on the line after the last argument when opening brace is on a separate line from the first argument.
+  password: 'magic')
+                   ^
+config.ru:19:1: C: [Correctable] Layout/TrailingEmptyLines: 1 trailing blank lines detected.
+db/migrations/00001_create_posts_table.rb:7:3: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 2 instead of 6).
+  #    DateTime      :updated_at,   default: Sequel::CURRENT_TIMESTAMP
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrations/00003_create_outcomes_table.rb:1:20: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+Sequel.migration do 
+                   ^
+db/migrations/00003_create_outcomes_table.rb:2:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	up do
+^
+db/migrations/00003_create_outcomes_table.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	up do
+^
+db/migrations/00003_create_outcomes_table.rb:3:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		create_table(:outcomes) do
+^^
+db/migrations/00003_create_outcomes_table.rb:3:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+		create_table(:outcomes) do
+ ^
+db/migrations/00003_create_outcomes_table.rb:4:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			primary_key :id
+^^^
+db/migrations/00003_create_outcomes_table.rb:4:4: C: [Correctable] Layout/IndentationWidth: Use 2 (not -2) spaces for indentation.
+			primary_key :id
+   ^^
+db/migrations/00003_create_outcomes_table.rb:5:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			DateTime    :created_at, default: Sequel::CURRENT_TIMESTAMP
+^^^
+db/migrations/00003_create_outcomes_table.rb:6:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			DateTime    :updated_at, default: Sequel::CURRENT_TIMESTAMP
+^^^
+db/migrations/00003_create_outcomes_table.rb:7:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	   	end 
+^^^^^
+db/migrations/00003_create_outcomes_table.rb:7:6: C: [Correctable] Layout/BlockAlignment: end at 7, 5 is not aligned with create_table(:outcomes) do at 3, 2.
+	   	end 
+     ^^^
+db/migrations/00003_create_outcomes_table.rb:7:9: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	   	end 
+        ^
+db/migrations/00003_create_outcomes_table.rb:8:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end   
+^
+db/migrations/00003_create_outcomes_table.rb:8:5: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	end   
+    ^^^
+db/migrations/00003_create_outcomes_table.rb:9:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	down do 
+^
+db/migrations/00003_create_outcomes_table.rb:9:9: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	down do 
+        ^
+db/migrations/00003_create_outcomes_table.rb:10:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		drop_table(:outcomes)
+^^
+db/migrations/00003_create_outcomes_table.rb:10:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+		drop_table(:outcomes)
+ ^
+db/migrations/00003_create_outcomes_table.rb:11:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end
+^
+db/migrations/00003_create_outcomes_table.rb:12:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/00004_create_careers_table.rb:1:20: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+Sequel.migration do 
+                   ^
+db/migrations/00004_create_careers_table.rb:2:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	up do
+^
+db/migrations/00004_create_careers_table.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	up do
+^
+db/migrations/00004_create_careers_table.rb:3:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		create_table(:careers) do
+^^
+db/migrations/00004_create_careers_table.rb:3:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+		create_table(:careers) do
+ ^
+db/migrations/00004_create_careers_table.rb:4:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			primary_key :id
+^^^
+db/migrations/00004_create_careers_table.rb:4:4: C: [Correctable] Layout/IndentationWidth: Use 2 (not -2) spaces for indentation.
+			primary_key :id
+   ^^
+db/migrations/00004_create_careers_table.rb:5:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			String      :name, null: false 
+^^^
+db/migrations/00004_create_careers_table.rb:5:34: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+			String      :name, null: false 
+                                 ^
+db/migrations/00004_create_careers_table.rb:6:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			DateTime    :created_at, default: Sequel::CURRENT_TIMESTAMP
+^^^
+db/migrations/00004_create_careers_table.rb:7:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			DateTime    :updated_at, default: Sequel::CURRENT_TIMESTAMP
+^^^
+db/migrations/00004_create_careers_table.rb:8:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	   	end 
+^^^^^
+db/migrations/00004_create_careers_table.rb:8:6: C: [Correctable] Layout/BlockAlignment: end at 8, 5 is not aligned with create_table(:careers) do at 3, 2.
+	   	end 
+     ^^^
+db/migrations/00004_create_careers_table.rb:8:9: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	   	end 
+        ^
+db/migrations/00004_create_careers_table.rb:9:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end   
+^
+db/migrations/00004_create_careers_table.rb:9:5: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	end   
+    ^^^
+db/migrations/00004_create_careers_table.rb:10:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	down do 
+^
+db/migrations/00004_create_careers_table.rb:10:9: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	down do 
+        ^
+db/migrations/00004_create_careers_table.rb:11:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		drop_table(:careers)
+^^
+db/migrations/00004_create_careers_table.rb:11:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+		drop_table(:careers)
+ ^
+db/migrations/00004_create_careers_table.rb:12:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end
+^
+db/migrations/00004_create_careers_table.rb:13:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/00005_create_surveys_table.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    up do
+^^^^
+db/migrations/00005_create_surveys_table.rb:3:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        create_table(:surveys) do
+    ^^^^
+db/migrations/00005_create_surveys_table.rb:4:9: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+            primary_key :id
+        ^^^^
+db/migrations/00005_create_surveys_table.rb:13:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        drop_table(:surveys)
+    ^^^^
+db/migrations/00005_create_surveys_table.rb:15:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/00006_create_responses_table.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    up do
+^^^^
+db/migrations/00006_create_responses_table.rb:3:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        create_table(:responses) do
+    ^^^^
+db/migrations/00006_create_responses_table.rb:4:9: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+            foreign_key :survey_id, :surveys
+        ^^^^
+db/migrations/00006_create_responses_table.rb:11:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        drop_table(:responses)
+    ^^^^
+db/migrations/00006_create_responses_table.rb:13:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/00007_create_questions_table.rb:1:20: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+Sequel.migration do 
+                   ^
+db/migrations/00007_create_questions_table.rb:2:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	up do
+^
+db/migrations/00007_create_questions_table.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	up do
+^
+db/migrations/00007_create_questions_table.rb:3:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		create_table(:questions) do
+^^
+db/migrations/00007_create_questions_table.rb:3:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+		create_table(:questions) do
+ ^
+db/migrations/00007_create_questions_table.rb:4:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			primary_key :id
+^^^
+db/migrations/00007_create_questions_table.rb:4:4: C: [Correctable] Layout/IndentationWidth: Use 2 (not -2) spaces for indentation.
+			primary_key :id
+   ^^
+db/migrations/00007_create_questions_table.rb:5:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			String      :name, null: false
+^^^
+db/migrations/00007_create_questions_table.rb:6:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			String      :description
+^^^
+db/migrations/00007_create_questions_table.rb:7:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			Integer     :number, null:false
+^^^
+db/migrations/00007_create_questions_table.rb:7:29: C: [Correctable] Layout/SpaceAfterColon: Space missing after colon.
+			Integer     :number, null:false
+                            ^
+db/migrations/00007_create_questions_table.rb:8:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			DateTime    :created_at, default: Sequel::CURRENT_TIMESTAMP
+^^^
+db/migrations/00007_create_questions_table.rb:9:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			DateTime    :updated_at, default: Sequel::CURRENT_TIMESTAMP
+^^^
+db/migrations/00007_create_questions_table.rb:10:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	   	end 
+^^^^^
+db/migrations/00007_create_questions_table.rb:10:6: C: [Correctable] Layout/BlockAlignment: end at 10, 5 is not aligned with create_table(:questions) do at 3, 2.
+	   	end 
+     ^^^
+db/migrations/00007_create_questions_table.rb:10:9: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	   	end 
+        ^
+db/migrations/00007_create_questions_table.rb:11:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end   
+^
+db/migrations/00007_create_questions_table.rb:11:5: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	end   
+    ^^^
+db/migrations/00007_create_questions_table.rb:12:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	down do 
+^
+db/migrations/00007_create_questions_table.rb:12:9: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	down do 
+        ^
+db/migrations/00007_create_questions_table.rb:13:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		drop_table(:questions)
+^^
+db/migrations/00007_create_questions_table.rb:13:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+		drop_table(:questions)
+ ^
+db/migrations/00007_create_questions_table.rb:14:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end
+^
+db/migrations/00007_create_questions_table.rb:15:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/00008_create_choices_table.rb:1:20: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+Sequel.migration do 
+                   ^
+db/migrations/00008_create_choices_table.rb:2:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	up do
+^
+db/migrations/00008_create_choices_table.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	up do
+^
+db/migrations/00008_create_choices_table.rb:3:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		create_table(:choices) do
+^^
+db/migrations/00008_create_choices_table.rb:3:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+		create_table(:choices) do
+ ^
+db/migrations/00008_create_choices_table.rb:4:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			primary_key :id
+^^^
+db/migrations/00008_create_choices_table.rb:4:4: C: [Correctable] Layout/IndentationWidth: Use 2 (not -2) spaces for indentation.
+			primary_key :id
+   ^^
+db/migrations/00008_create_choices_table.rb:5:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			foreign_key :question_id, :questions
+^^^
+db/migrations/00008_create_choices_table.rb:6:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			String      :text, null: false
+^^^
+db/migrations/00008_create_choices_table.rb:7:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			DateTime    :created_at, default: Sequel::CURRENT_TIMESTAMP
+^^^
+db/migrations/00008_create_choices_table.rb:8:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			DateTime    :updated_at, default: Sequel::CURRENT_TIMESTAMP
+^^^
+db/migrations/00008_create_choices_table.rb:9:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	   	end 
+^^^^^
+db/migrations/00008_create_choices_table.rb:9:6: C: [Correctable] Layout/BlockAlignment: end at 9, 5 is not aligned with create_table(:choices) do at 3, 2.
+	   	end 
+     ^^^
+db/migrations/00008_create_choices_table.rb:9:9: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	   	end 
+        ^
+db/migrations/00008_create_choices_table.rb:10:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end   
+^
+db/migrations/00008_create_choices_table.rb:10:5: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	end   
+    ^^^
+db/migrations/00008_create_choices_table.rb:11:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	down do 
+^
+db/migrations/00008_create_choices_table.rb:11:9: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	down do 
+        ^
+db/migrations/00008_create_choices_table.rb:12:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		drop_table(:choices)
+^^
+db/migrations/00008_create_choices_table.rb:12:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+		drop_table(:choices)
+ ^
+db/migrations/00008_create_choices_table.rb:13:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end
+^
+db/migrations/00008_create_choices_table.rb:14:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/00009_add_foreign_keys.rb:1:20: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+Sequel.migration do 
+                   ^
+db/migrations/00009_add_foreign_keys.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    up do
+^^^^
+db/migrations/00009_add_foreign_keys.rb:3:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        alter_table(:outcomes) do
+    ^^^^
+db/migrations/00009_add_foreign_keys.rb:4:9: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+            add_foreign_key :choice_id, :choices
+        ^^^^
+db/migrations/00009_add_foreign_keys.rb:6:12: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+        end 
+           ^
+db/migrations/00009_add_foreign_keys.rb:8:9: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+            add_foreign_key :question_id, :questions
+        ^^^^
+db/migrations/00009_add_foreign_keys.rb:11:8: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    end   
+       ^^^
+db/migrations/00009_add_foreign_keys.rb:12:12: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    down do 
+           ^
+db/migrations/00009_add_foreign_keys.rb:13:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        drop_column :outcomes,  :choice_id
+    ^^^^
+db/migrations/00009_add_foreign_keys.rb:18:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/00010_add_type_field_to_questions.rb:3:33: C: [Correctable] Layout/SpaceBeforeComma: Space found before comma.
+    add_column :questions, :type , String, null: false 
+                                ^
+db/migrations/00010_add_type_field_to_questions.rb:3:55: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    add_column :questions, :type , String, null: false 
+                                                      ^
+db/migrations/00010_add_type_field_to_questions.rb:9:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/00011_add_primary_keys_to_responses.rb:4:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        add_primary_key :id
+    ^^^^
+db/migrations/00011_add_primary_keys_to_responses.rb:5:8: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    end 
+       ^
+db/migrations/00011_add_primary_keys_to_responses.rb:11:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/seeds.rb:2:18: C: [Correctable] Layout/SpaceInsideBlockBraces: Space between { and | missing.
+Response.all.map {|r| r.destroy}
+                 ^^
+db/seeds.rb:2:18: C: [Correctable] Style/SymbolProc: Pass &:destroy as an argument to map instead of a block.
+Response.all.map {|r| r.destroy}
+                 ^^^^^^^^^^^^^^^
+db/seeds.rb:2:32: C: [Correctable] Layout/SpaceInsideBlockBraces: Space missing inside }.
+Response.all.map {|r| r.destroy}
+                               ^
+db/seeds.rb:3:16: C: [Correctable] Layout/SpaceInsideBlockBraces: Space between { and | missing.
+Survey.all.map {|s| s.destroy}
+               ^^
+db/seeds.rb:3:16: C: [Correctable] Style/SymbolProc: Pass &:destroy as an argument to map instead of a block.
+Survey.all.map {|s| s.destroy}
+               ^^^^^^^^^^^^^^^
+db/seeds.rb:3:30: C: [Correctable] Layout/SpaceInsideBlockBraces: Space missing inside }.
+Survey.all.map {|s| s.destroy}
+                             ^
+db/seeds.rb:4:17: C: [Correctable] Layout/SpaceInsideBlockBraces: Space between { and | missing.
+Outcome.all.map {|o| o.destroy}
+                ^^
+db/seeds.rb:4:17: C: [Correctable] Style/SymbolProc: Pass &:destroy as an argument to map instead of a block.
+Outcome.all.map {|o| o.destroy}
+                ^^^^^^^^^^^^^^^
+db/seeds.rb:4:31: C: [Correctable] Layout/SpaceInsideBlockBraces: Space missing inside }.
+Outcome.all.map {|o| o.destroy}
+                              ^
+db/seeds.rb:5:16: C: [Correctable] Layout/SpaceInsideBlockBraces: Space between { and | missing.
+Choice.all.map {|c| c.destroy}
+               ^^
+db/seeds.rb:5:16: C: [Correctable] Style/SymbolProc: Pass &:destroy as an argument to map instead of a block.
+Choice.all.map {|c| c.destroy}
+               ^^^^^^^^^^^^^^^
+db/seeds.rb:5:30: C: [Correctable] Layout/SpaceInsideBlockBraces: Space missing inside }.
+Choice.all.map {|c| c.destroy}
+                             ^
+db/seeds.rb:6:18: C: [Correctable] Layout/SpaceInsideBlockBraces: Space between { and | missing.
+Question.all.map {|q| q.destroy}
+                 ^^
+db/seeds.rb:6:18: C: [Correctable] Style/SymbolProc: Pass &:destroy as an argument to map instead of a block.
+Question.all.map {|q| q.destroy}
+                 ^^^^^^^^^^^^^^^
+db/seeds.rb:6:32: C: [Correctable] Layout/SpaceInsideBlockBraces: Space missing inside }.
+Question.all.map {|q| q.destroy}
+                               ^
+db/seeds.rb:7:16: C: [Correctable] Layout/SpaceInsideBlockBraces: Space between { and | missing.
+Career.all.map {|c| c.destroy}
+               ^^
+db/seeds.rb:7:16: C: [Correctable] Style/SymbolProc: Pass &:destroy as an argument to map instead of a block.
+Career.all.map {|c| c.destroy}
+               ^^^^^^^^^^^^^^^
+db/seeds.rb:7:30: C: [Correctable] Layout/SpaceInsideBlockBraces: Space missing inside }.
+Career.all.map {|c| c.destroy}
+                             ^
+db/seeds.rb:16:1: C: Naming/VariableName: Use snake_case for variable names.
+edFisica     = Career.create(name: 'Educación Física')
+^^^^^^^^
+db/seeds.rb:17:34: C: [Correctable] Layout/SpaceAfterColon: Space missing after colon.
+filosofia    = Career.create(name:'Filosofía')
+                                 ^
+db/seeds.rb:124:7: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+preg11= Question.create(name: 'Pregunta Nº 11 ', description: 'Me encanta estudiar el cuerpo humano y conocer cómo funciona. Además, no me impresiona la sangre.', number: 11, type: 'Single Choice')
+      ^
+db/seeds.rb:165:70: C: Naming/VariableName: Use snake_case for variable names.
+        out1_ch1_preg14 = Outcome.create(choice: ch1_preg14, career: edFisica)
+                                                                     ^^^^^^^^
+db/seeds.rb:201:70: C: Naming/VariableName: Use snake_case for variable names.
+        out1_ch3_preg15 = Outcome.create(choice: ch3_preg15, career: edFisica)
+                                                                     ^^^^^^^^
+models/career.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    one_to_many  :outcomes
+^^^^
+models/career.rb:2:16: C: [Correctable] Layout/ExtraSpacing: Unnecessary spacing detected.
+    one_to_many  :outcomes
+               ^
+models/career.rb:2:16: C: [Correctable] Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+    one_to_many  :outcomes
+               ^^
+models/career.rb:3:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    one_to_many :surveys
+^^^^
+models/career.rb:5:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def validate
+^^^^
+models/career.rb:6:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        super
+    ^^^^
+models/career.rb:11:81: C: Layout/LineLength: Line is too long. [85/80]
+    # la cantidad de puntos de cada carrera en base a las respuestas del cuestionario
+                                                                                ^^^^^
+models/career.rb:12:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def self.countUserPointsOnEachCareer(set, parameters) 
+^^^^
+models/career.rb:12:14: C: Naming/MethodName: Use snake_case for method names.
+    def self.countUserPointsOnEachCareer(set, parameters) 
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/career.rb:12:58: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    def self.countUserPointsOnEachCareer(set, parameters) 
+                                                         ^
+models/career.rb:13:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        self.each do |career|
+    ^^^^
+models/career.rb:13:9: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+        self.each do |career|
+        ^^^^
+models/career.rb:18:40: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+        Question.all.each do |question| 
+                                       ^
+models/career.rb:19:9: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+            choice_selected = parameters[:"#{question.id}"].to_i
+        ^^^^
+models/career.rb:20:81: C: [Correctable] Layout/LineLength: Line is too long. [91/80]
+            Outcome.all.select { |out| choice_selected == out.choice_id }.each do |outcome|
+                                                                                ^^^^^^^^^^^
+models/career.rb:25:9: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+        return set
+        ^^^^^^
+models/career.rb:28:1: C: [Correctable] Layout/TrailingEmptyLines: 1 trailing blank lines detected.
+models/choice.rb:2:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	one_to_many :outcomes
+^
+models/choice.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	one_to_many :outcomes
+^
+models/choice.rb:3:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	one_to_many :responses
+^
+models/choice.rb:3:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	one_to_many :responses
+^
+models/choice.rb:4:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    many_to_one :questions
+^^^^
+models/choice.rb:4:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    many_to_one :questions
+    ^^^^^^^^^^^^^^^^^^^^^^
+models/choice.rb:6:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	def validate
+^
+models/choice.rb:6:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	def validate
+^
+models/choice.rb:7:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		super
+^^
+models/choice.rb:7:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+		super
+ ^
+models/choice.rb:8:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		errors.add(:text, 'cannot be empty') if !text || text.empty?
+^^
+models/choice.rb:9:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		errors.add(:question_id, 'cannot be empty') if !question_id
+^^
+models/choice.rb:9:3: C: [Correctable] Style/NegatedIf: Favor unless over if for negative conditions.
+		errors.add(:question_id, 'cannot be empty') if !question_id
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/choice.rb:10:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end
+^
+models/choice.rb:12:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+models/choice.rb:12:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+models/init.rb:7:28: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+require_relative 'response'
+                           
+models/outcome.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    many_to_one :career
+^^^^
+models/outcome.rb:3:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    many_to_one :choice
+^^^^
+models/outcome.rb:5:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def validate
+^^^^
+models/outcome.rb:6:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+    	super
+^^^^^
+models/outcome.rb:6:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+    	super
+    ^
+models/outcome.rb:7:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+    	errors.add(:choice_id, 'cannot be empty') if !choice_id
+^^^^^
+models/outcome.rb:7:6: C: [Correctable] Style/NegatedIf: Favor unless over if for negative conditions.
+    	errors.add(:choice_id, 'cannot be empty') if !choice_id
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/outcome.rb:8:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+    	errors.add(:career_id, 'cannot be empty') if !career_id
+^^^^^
+models/outcome.rb:8:6: C: [Correctable] Style/NegatedIf: Favor unless over if for negative conditions.
+    	errors.add(:career_id, 'cannot be empty') if !career_id
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/outcome.rb:10:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+models/question.rb:2:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	one_to_many :responses
+^
+models/question.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	one_to_many :responses
+^
+models/question.rb:3:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	one_to_many :choices
+^
+models/question.rb:3:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	one_to_many :choices
+^
+models/question.rb:4:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+models/question.rb:5:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	def validate
+^
+models/question.rb:5:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	def validate
+^
+models/question.rb:6:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		super
+^^
+models/question.rb:6:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+		super
+ ^
+models/question.rb:7:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		errors.add(:number, 'cannot be empty') if !number
+^^
+models/question.rb:7:3: C: [Correctable] Style/NegatedIf: Favor unless over if for negative conditions.
+		errors.add(:number, 'cannot be empty') if !number
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/question.rb:8:9: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+        errors.add(:name, 'cannot be empty') if !name || name.empty?
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/question.rb:9:9: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+        errors.add(:type, 'cannot be empty') if !type || type.empty?
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/question.rb:10:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end
+^
+models/question.rb:12:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+models/question.rb:12:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+models/response.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    many_to_one :survey
+^^^^
+models/response.rb:3:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    many_to_one :question
+^^^^
+models/response.rb:4:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    many_to_one :choice
+^^^^
+models/response.rb:5:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def validate
+^^^^
+models/response.rb:6:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        super
+    ^^^^
+models/response.rb:7:9: C: [Correctable] Style/NegatedIf: Favor unless over if for negative conditions.
+        errors.add(:question_id, 'cannot be empty') if !question_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/response.rb:8:9: C: [Correctable] Style/NegatedIf: Favor unless over if for negative conditions.
+        errors.add(:choice_id, 'cannot be empty') if !choice_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/response.rb:9:9: C: [Correctable] Style/NegatedIf: Favor unless over if for negative conditions.
+        errors.add(:survey_id, 'cannot be empty') if !survey_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/response.rb:11:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+models/survey.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    many_to_one :career
+^^^^
+models/survey.rb:3:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    one_to_many  :responses
+^^^^
+models/survey.rb:3:16: C: [Correctable] Layout/ExtraSpacing: Unnecessary spacing detected.
+    one_to_many  :responses
+               ^
+models/survey.rb:3:16: C: [Correctable] Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+    one_to_many  :responses
+               ^^
+models/survey.rb:5:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def validate
+^^^^
+models/survey.rb:6:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        super
+    ^^^^
+models/survey.rb:8:9: C: [Correctable] Style/NegatedIf: Favor unless over if for negative conditions.
+        errors.add(:career_id, 'cannot be empty') if !career_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/survey.rb:10:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+tests/models/career_test.rb:1:14: C: [Correctable] Style/ExpandPathArguments: Use expand_path('../test_helper.rb', __dir__) instead of expand_path('../../test_helper.rb', __FILE__).
+require File.expand_path '../../test_helper.rb', __FILE__
+             ^^^^^^^^^^^
+tests/models/career_test.rb:4:19: W: Lint/Void: Variable TestCase used in void context.
+  MiniTest::Unit::TestCase  
+                  ^^^^^^^^
+tests/models/career_test.rb:4:27: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+  MiniTest::Unit::TestCase  
+                          ^^
+tests/models/career_test.rb:8:24: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    career = Career.new    
+                       ^^^^
+tests/models/career_test.rb:11:21: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    career.name = '' 
+                    ^
+tests/models/career_test.rb:19:24: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    career = Career.new    
+                       ^^^^
+tests/models/career_test.rb:27:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+tests/models/choice_test.rb:1:14: C: [Correctable] Style/ExpandPathArguments: Use expand_path('../test_helper.rb', __dir__) instead of expand_path('../../test_helper.rb', __FILE__).
+require File.expand_path '../../test_helper.rb', __FILE__
+             ^^^^^^^^^^^
+tests/models/choice_test.rb:4:19: W: Lint/Void: Variable TestCase used in void context.
+  MiniTest::Unit::TestCase  
+                  ^^^^^^^^
+tests/models/choice_test.rb:4:27: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+  MiniTest::Unit::TestCase  
+                          ^^
+tests/models/choice_test.rb:8:24: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    choice = Choice.new   
+                       ^^^
+tests/models/choice_test.rb:11:21: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    choice.text = ''    
+                    ^^^^
+tests/models/choice_test.rb:19:24: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    choice = Choice.new   
+                       ^^^
+tests/models/choice_test.rb:22:22: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    choice.text = nil    
+                     ^^^^
+tests/models/choice_test.rb:26:6: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+  end  
+     ^^
+tests/models/choice_test.rb:30:24: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    choice = Choice.new    
+                       ^^^^
+tests/models/choice_test.rb:33:29: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    choice.question_id = nil 
+                            ^
+tests/models/choice_test.rb:38:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+tests/models/outcome_test.rb:1:14: C: [Correctable] Style/ExpandPathArguments: Use expand_path('../test_helper.rb', __dir__) instead of expand_path('../../test_helper.rb', __FILE__).
+require File.expand_path '../../test_helper.rb', __FILE__
+             ^^^^^^^^^^^
+tests/models/outcome_test.rb:4:19: W: Lint/Void: Variable TestCase used in void context.
+  MiniTest::Unit::TestCase  
+                  ^^^^^^^^
+tests/models/outcome_test.rb:4:27: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+  MiniTest::Unit::TestCase  
+                          ^^
+tests/models/outcome_test.rb:8:26: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    outcome = Outcome.new   
+                         ^^^
+tests/models/outcome_test.rb:11:28: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    outcome.choice_id = nil    
+                           ^^^^
+tests/models/outcome_test.rb:15:6: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+  end  
+     ^^
+tests/models/outcome_test.rb:19:26: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    outcome = Outcome.new    
+                         ^^^^
+tests/models/outcome_test.rb:22:28: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    outcome.career_id = nil 
+                           ^
+tests/models/outcome_test.rb:27:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+tests/models/question_test.rb:1:14: C: [Correctable] Style/ExpandPathArguments: Use expand_path('../test_helper.rb', __dir__) instead of expand_path('../../test_helper.rb', __FILE__).
+require File.expand_path '../../test_helper.rb', __FILE__
+             ^^^^^^^^^^^
+tests/models/question_test.rb:4:19: W: Lint/Void: Variable TestCase used in void context.
+  MiniTest::Unit::TestCase  
+                  ^^^^^^^^
+tests/models/question_test.rb:4:27: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+  MiniTest::Unit::TestCase  
+                          ^^
+tests/models/question_test.rb:8:28: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    question = Question.new    
+                           ^^^^
+tests/models/question_test.rb:11:26: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    question.number = nil 
+                         ^
+tests/models/question_test.rb:16:3: C: [Correctable] Layout/EmptyLineBetweenDefs: Expected 1 empty line between method definitions; found 0.
+  def test_question_name_cannot_be_empty
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/question_test.rb:17:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+  	# Arrange
+^^^
+tests/models/question_test.rb:17:4: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 3 instead of 4).
+  	# Arrange
+   ^^^^^^^^^
+tests/models/question_test.rb:18:28: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    question = Question.new    
+                           ^^^^
+tests/models/question_test.rb:21:23: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    question.name = '' 
+                      ^
+tests/models/question_test.rb:29:28: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    question = Question.new    
+                           ^^^^
+tests/models/question_test.rb:32:24: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    question.name = nil 
+                       ^
+tests/models/question_test.rb:40:28: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    question = Question.new    
+                           ^^^^
+tests/models/question_test.rb:43:24: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    question.type = nil 
+                       ^
+tests/models/question_test.rb:51:28: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    question = Question.new    
+                           ^^^^
+tests/models/question_test.rb:54:23: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    question.type = '' 
+                      ^
+tests/models/question_test.rb:59:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+tests/models/response_test.rb:1:14: C: [Correctable] Style/ExpandPathArguments: Use expand_path('../test_helper.rb', __dir__) instead of expand_path('../../test_helper.rb', __FILE__).
+require File.expand_path '../../test_helper.rb', __FILE__
+             ^^^^^^^^^^^
+tests/models/response_test.rb:4:19: W: Lint/Void: Variable TestCase used in void context.
+  MiniTest::Unit::TestCase  
+                  ^^^^^^^^
+tests/models/response_test.rb:4:27: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+  MiniTest::Unit::TestCase  
+                          ^^
+tests/models/response_test.rb:8:28: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    response = Response.new    
+                           ^^^^
+tests/models/response_test.rb:11:31: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    response.question_id = nil 
+                              ^
+tests/models/response_test.rb:16:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 3) spaces for indentation.
+   def test_response_must_has_choice
+^^^
+tests/models/response_test.rb:16:4: C: [Correctable] Layout/EmptyLineBetweenDefs: Expected 1 empty line between method definitions; found 0.
+   def test_response_must_has_choice
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/response_test.rb:16:4: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+   def test_response_must_has_choice ...
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/response_test.rb:18:4: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+    response = Response.new    
+   ^
+tests/models/response_test.rb:18:28: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    response = Response.new    
+                           ^^^^
+tests/models/response_test.rb:21:29: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    response.choice_id = nil 
+                            ^
+tests/models/response_test.rb:25:3: W: [Correctable] Layout/DefEndAlignment: end at 25, 2 is not aligned with def at 16, 3.
+  end
+  ^^^
+tests/models/response_test.rb:26:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 3) spaces for indentation.
+   def test_response_must_has_survey
+^^^
+tests/models/response_test.rb:26:4: C: [Correctable] Layout/EmptyLineBetweenDefs: Expected 1 empty line between method definitions; found 0.
+   def test_response_must_has_survey
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/response_test.rb:26:4: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+   def test_response_must_has_survey ...
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/response_test.rb:28:4: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+    response = Response.new    
+   ^
+tests/models/response_test.rb:28:28: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    response = Response.new    
+                           ^^^^
+tests/models/response_test.rb:31:29: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    response.survey_id = nil 
+                            ^
+tests/models/response_test.rb:35:3: W: [Correctable] Layout/DefEndAlignment: end at 35, 2 is not aligned with def at 26, 3.
+  end
+  ^^^
+tests/models/response_test.rb:36:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+tests/models/survey_test.rb:1:14: C: [Correctable] Style/ExpandPathArguments: Use expand_path('../test_helper.rb', __dir__) instead of expand_path('../../test_helper.rb', __FILE__).
+require File.expand_path '../../test_helper.rb', __FILE__
+             ^^^^^^^^^^^
+tests/models/survey_test.rb:4:19: W: Lint/Void: Variable TestCase used in void context.
+  MiniTest::Unit::TestCase  
+                  ^^^^^^^^
+tests/models/survey_test.rb:4:27: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+  MiniTest::Unit::TestCase  
+                          ^^
+tests/models/survey_test.rb:8:24: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    survey = Survey.new   
+                       ^^^
+tests/models/survey_test.rb:11:25: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    survey.username = ''    
+                        ^^^^
+tests/models/survey_test.rb:15:6: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+  end  
+     ^^
+tests/models/survey_test.rb:19:24: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    survey = Survey.new   
+                       ^^^
+tests/models/survey_test.rb:22:26: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    survey.username = nil   
+                         ^^^
+tests/models/survey_test.rb:30:24: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    survey = Survey.new    
+                       ^^^^
+tests/models/survey_test.rb:33:27: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    survey.career_id = nil 
+                          ^
+tests/models/survey_test.rb:38:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+tests/test_helper.rb:9:4: C: [Correctable] Layout/FirstArgumentIndentation: Indent the first argument one step more than the start of the previous line.
+   adapter: 'postgres', ...
+   ^^^^^^^^^^^^^^^^^^^^
+tests/test_helper.rb:13:21: C: [Correctable] Layout/MultilineMethodCallBraceLayout: Closing method call brace must be on the line after the last argument when opening brace is on a separate line from the first argument.
+   password: 'magic')
+                    ^
+tests/test_helper.rb:15:7: C: [Correctable] Style/ClassAndModuleChildren: Use nested module/class definitions instead of compact style.
+class Minitest::HooksSpec
+      ^^^^^^^^^^^^^^^^^^^
+tests/test_helper.rb:17:20: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    DB.transaction(:rollback=>:always, :auto_savepoint=>true){super}
+                   ^^^^^^^^^^^
+tests/test_helper.rb:17:29: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =>.
+    DB.transaction(:rollback=>:always, :auto_savepoint=>true){super}
+                            ^^
+tests/test_helper.rb:17:40: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    DB.transaction(:rollback=>:always, :auto_savepoint=>true){super}
+                                       ^^^^^^^^^^^^^^^^^
+tests/test_helper.rb:17:55: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =>.
+    DB.transaction(:rollback=>:always, :auto_savepoint=>true){super}
+                                                      ^^
+tests/test_helper.rb:17:62: C: [Correctable] Layout/SpaceBeforeBlockBraces: Space missing to the left of {.
+    DB.transaction(:rollback=>:always, :auto_savepoint=>true){super}
+                                                             ^
+tests/test_helper.rb:17:63: C: [Correctable] Layout/SpaceInsideBlockBraces: Space missing inside {.
+    DB.transaction(:rollback=>:always, :auto_savepoint=>true){super}
+                                                              ^
+tests/test_helper.rb:17:68: C: [Correctable] Layout/SpaceInsideBlockBraces: Space missing inside }.
+    DB.transaction(:rollback=>:always, :auto_savepoint=>true){super}
+                                                                   ^
+tests/test_helper.rb:21:36: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+require File.expand_path './app.rb'
+                                   
+
+30 files inspected, 336 offenses detected, 320 offenses auto-correctable

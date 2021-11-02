@@ -1,28 +1,21 @@
 class Career < Sequel::Model
-    one_to_many  :outcomes
-    one_to_many :surveys
+  one_to_many :outcomes
+  one_to_many :surveys
 
-    def validate
-        super
-        errors.add(:name, 'cannot be empty') if !name || name.empty?
+  def validate
+    super
+    errors.add(:name, 'cannot be empty') if !name || name.empty?
+  end
+
+  def self.points_by_career(set, parameters)
+    each do |career|
+      set[career.id] = 0
     end
-
-    # funcion que toma un hash y devuelve un contador de
-    # la cantidad de puntos de cada carrera en base a las respuestas del cuestionario
-    def self.countUserPointsOnEachCareer(set, parameters) 
-        self.each do |career|
-          set[career.id] = 0
-        end
-
-        # sumar el contador de cada carrera dependiendo de las respuestas dadas
-        Question.all.each do |question| 
-            choice_selected = parameters[:"#{question.id}"].to_i
-            Outcome.all.select { |out| choice_selected == out.choice_id }.each do |outcome|
-              set[outcome.career_id] += 1
-            end
-        end
-
-        return set
+    Question.all.each do |question|
+      choice_selected = parameters[:"#{question.id}"].to_i
+      outcomes = Outcome.where(choice_id: choice_selected)
+      outcomes.map { |outcome| set[outcome.career_id] += 1 }   
     end
+    set
+  end
 end
-
