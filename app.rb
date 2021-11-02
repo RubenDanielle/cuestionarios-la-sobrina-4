@@ -5,10 +5,6 @@ class App < Sinatra::Base
     erb :home
   end
 
-  def careers:
-    Career.all
-  end
-
   get '/careers' do
     @careers = Career.all
     erb :'careers/list_careers'
