@@ -15,7 +15,6 @@ class Career < Sequel::Model
       choice_selected = parameters[:"#{question.id}"].to_i
       outcomes = Outcome.where(choice_id: choice_selected)
       outcomes.map { |outcome| set[outcome.career_id] += 1 }   
-      end
     end
     set
   end
