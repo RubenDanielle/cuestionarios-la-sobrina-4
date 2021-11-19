@@ -1,19 +1,12 @@
 require './models/init'
+require './controllers/CareerController.rb'
 
 class App < Sinatra::Base
   get '/' do
     erb :home
   end
 
-  get '/careers' do
-    @careers = Career.all
-    erb :'careers/list_careers'
-  end
-
-  get '/careers/:id' do
-    @career = Career.where(id: params['id']).last
-    erb :'careers/career_data'
-  end
+  use CareerController
 
   get '/surveys' do
     @careers = Career.all
