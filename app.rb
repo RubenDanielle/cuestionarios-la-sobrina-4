@@ -1,24 +1,11 @@
 require './models/init'
 require './controllers/CareerController.rb'
+require './controllers/SurveyController.rb'
 
 class App < Sinatra::Base
-  get '/' do
-    erb :home
-  end
 
   use CareerController
-
-  get '/surveys' do
-    @careers = Career.all
-    @surveys = Survey.all
-    erb :'surveys/list_surveys'
-  end
-
-  get '/respond_surveys' do
-    @questions = Question.all
-    @choices = Choice.all
-    erb :'surveys/respond_surveys'
-  end
+  use SurveyController
 
   post '/surveys' do
     results = {}
@@ -42,22 +29,6 @@ class App < Sinatra::Base
     end
   end
 
-  post '/posts' do
-    request.body.rewind  # in case someone already read it
-    data = JSON.parse request.body.read
-    post = Post.new(description: data['desc'])
-    if post.save
-      [201, { 'Location' => "posts/#{post.id}" }, 'CREATED']
-    else
-      [500, {}, 'Internal Server Error']
-    end
-  end
-
-  get '/posts' do
-    p = Post.where(id: 1).last
-    p.description
-  end
-
   get '/surveys_get_career_and_dates' do
     @surveys = Survey.all
     @careers = Career.all
@@ -77,4 +48,9 @@ class App < Sinatra::Base
     @number_of_surveys = @surveys.all.count
     erb :'surveys/surveys_by_date_and_career'
   end
+
+  get '/' do
+    erb :home
+  end
+
 end
